@@ -2,7 +2,7 @@ exports.up = function(knex, Promise) {
     return knex.schema.createTable('persona', function(t) {
 
         // Primary Key
-        t.bigIncrements('id_usuario');
+        t.bigIncrements('id');
 
         // Data
         t.string('nombre').notNullable();

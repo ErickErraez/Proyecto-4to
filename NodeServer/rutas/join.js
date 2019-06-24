@@ -1,10 +1,10 @@
 ;
 const express = require('express')
 let api = express.Router(),
-  pruebaControl = require('../controles/prueba')
+    dataControl = require('../controles/allData')
 
-api.get('/prueba', pruebaControl.prueba)
-api.get('/prueba1', pruebaControl.prueba1)
-api.post('/prueba1', pruebaControl.prueba1)
+api.get('/getData', dataControl.allData)
+api.get('/get', dataControl.get)
+api.post('/getData', dataControl.insertData)
 
 module.exports = api
