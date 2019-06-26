@@ -5,6 +5,6 @@ let api = express.Router(),
 
 api.get('/getData', dataControl.allData)
 api.get('/get', dataControl.get)
-api.post('/getData', dataControl.insertData)
+api.post('/saveData', dataControl.insertData)
 
 module.exports = api
