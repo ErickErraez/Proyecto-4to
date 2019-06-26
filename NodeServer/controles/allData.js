@@ -31,10 +31,14 @@ let get = (req, res) => {
 
 let insertData = (req, res) => {
     let tabla = req.body.tabla
-    let datos = JSON.parse(req.body.datos)
-    db(tabla).returning("id").insert(datos) //Insertar
-        //knex('books').insert({title: 'Slaughterhouse Five'})
-        .then(resultado => {
+    let datos = req.body.datos
+    console.log(req.body)
+    console.log(tabla);
+    console.log(datos);
+    const qu = db.insert(datos).into(tabla); //Insertar
+    //knex('books').insert({title: 'Slaughterhouse Five'})
+    qu.then(resultado => {
+            console.log(resultado);
             return res.status(200).json({
                 ok: true,
                 datos: resultado,
@@ -44,8 +48,8 @@ let insertData = (req, res) => {
         .catch((error) => {
             return res.status(500).json({
                 ok: false,
-                datos: null,
-                mensaje: `Error del servidor: ${error}`
+                datos: datos,
+                mensaje: `Error del servidor: ${error}` + tabla
             })
         })
 }
