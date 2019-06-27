@@ -12,7 +12,7 @@ exports.seed = function(knex, Promise) {
                     email: 'hchavez@gmail.com'
                 },
                 {
-                    nombre: 'Luis Fernandez',
+                    nombre: 'Hector Sandoval',
                     email: 'luchof2@gmail.com'
                 }
             ]);
