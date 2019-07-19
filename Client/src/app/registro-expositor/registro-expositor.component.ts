@@ -12,7 +12,6 @@ export class RegistroExpositorComponent implements OnInit {
   tipoArchivo: any;
   adjuntoArchivo: any;
 
-
   constructor() { }
 
   ngOnInit() {

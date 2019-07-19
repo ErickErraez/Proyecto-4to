@@ -1,4 +1,5 @@
-class Expositor {
+export class Expositor {
+    id?: number;
     nombre: string;
     apellido: string;
     correo: string;

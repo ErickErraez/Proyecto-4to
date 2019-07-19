@@ -1,4 +1,5 @@
-class sala {
+export class Sala {
+    id?: number;
     codigo: string;
     nombre: string;
     tema: string;
