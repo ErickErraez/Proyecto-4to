@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.proyecto.server.dao.PreguntasDao;
-import com.proyecto.server.models.Preguntas;
+import com.proyecto.server.model.Preguntas;
 import java.util.List;
 
 @Service("preguntasServices")

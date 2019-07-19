@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.proyecto.server.dao.ImagenesDao;
-import com.proyecto.server.models.Imagenes;
+import com.proyecto.server.model.Imagenes;
 
 @Service("imagenesServices")
 @Transactional

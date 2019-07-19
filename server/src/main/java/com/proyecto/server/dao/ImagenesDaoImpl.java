@@ -1,6 +1,6 @@
 package com.proyecto.server.dao;
 
-import com.proyecto.server.models.Imagenes;
+import com.proyecto.server.model.Imagenes;
 import java.util.List;
 import javax.transaction.Transactional;
 import org.springframework.stereotype.Repository;

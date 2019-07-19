@@ -1,8 +1,13 @@
 package com.proyecto.server.dao;
 
-import com.proyecto.server.models.Salas;
+import com.proyecto.server.model.Salas;
 import java.util.List;
+import javax.transaction.Transactional;
+import org.springframework.stereotype.Repository;
 
+
+@Repository
+@Transactional
 public class SalasDaoImpl extends AbstractSession implements SalasDao {
 
     @Override

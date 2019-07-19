@@ -1,7 +1,7 @@
 CREATE DATABASE ResQuiz;
 USE ResQuiz;
 
-CREATE TABLE Expositores(
+CREATE TABLE expositores(
 id INT NOT NULL AUTO_INCREMENT,
 nombre VARCHAR(50),
 apellido VARCHAR(50),
@@ -14,7 +14,7 @@ idImagen INT,
 PRIMARY KEY(id)
 );
 
-CREATE TABLE Imagenes(
+CREATE TABLE imagenes(
 id INT NOT NULL AUTO_INCREMENT,
 nombre VARCHAR(100),
 tipo VARCHAR(100),
@@ -23,7 +23,7 @@ adjunto LONGTEXT,
 PRIMARY KEY(id)
 );
 
-CREATE TABLE Salas(
+CREATE TABLE salas(
 id INT NOT NULL AUTO_INCREMENT,
 codigo VARCHAR(200),
 nombre VARCHAR(100),
@@ -35,7 +35,7 @@ idExpositor INT,
 PRIMARY KEY(id)
 );
 
-CREATE TABLE Preguntas(
+CREATE TABLE preguntas(
 id INT NOT NULL AUTO_INCREMENT,
 pregunta VARCHAR(200),
 nombre VARCHAR(50),
@@ -44,7 +44,7 @@ correo VARCHAR(100),
 PRIMARY KEY(id)
 );
 
-CREATE TABLE SalasPreguntas(
+CREATE TABLE salasPreguntas(
 id INT NOT NULL AUTO_INCREMENT,
 idSala INT,
 idPregunta INT,

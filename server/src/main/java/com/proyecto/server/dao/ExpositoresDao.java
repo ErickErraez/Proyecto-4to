@@ -1,7 +1,7 @@
 package com.proyecto.server.dao;
 
 import java.util.List;
-import com.proyecto.server.models.Expositores;
+import com.proyecto.server.model.Expositores;
 
 public interface ExpositoresDao {
 

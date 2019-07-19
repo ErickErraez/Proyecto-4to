@@ -1,13 +1,11 @@
 package com.proyecto.server.services;
-
+import com.proyecto.server.dao.ExpositoresDao;
+import com.proyecto.server.model.Expositores;
+import java.util.List;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.proyecto.server.dao.ExpositoresDao;
-import com.proyecto.server.models.Expositores;
-import com.proyecto.server.models.Imagenes;
-import java.util.List;
 
 @Service("expositorServices")
 @Transactional

@@ -1,8 +1,9 @@
-package com.proyecto.server.models;
+package com.proyecto.server.model;
 
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -37,6 +38,7 @@ public class Expositores implements Serializable {
     @Column(name = "titulo")
     private String titulo;
 
+    @ManyToOne(optional = true, fetch = FetchType.EAGER)
     @JoinColumn(name = "idImagen")
     private Imagenes imagenes;
 

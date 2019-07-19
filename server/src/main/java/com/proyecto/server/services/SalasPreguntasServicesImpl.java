@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.proyecto.server.dao.SalasPreguntasDao;
-import com.proyecto.server.models.SalasPreguntas;
+import com.proyecto.server.model.SalasPreguntas;
 import java.util.List;
 
 @Service("salasPreguntasServices")

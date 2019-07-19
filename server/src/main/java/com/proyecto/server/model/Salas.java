@@ -1,16 +1,18 @@
-package com.proyecto.server.models;
+package com.proyecto.server.model;
 
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Salas")
+@Table(name = "salas")
 public class Salas implements Serializable {
 
     @Id
@@ -33,6 +35,7 @@ public class Salas implements Serializable {
     @Column(name = "preguntasPermitidas")
     private int preguntasPermitidas;
 
+    @ManyToOne(optional = true, fetch = FetchType.EAGER)
     @JoinColumn(name = "idExpositor")
     private Expositores expositores;
 
@@ -149,7 +152,5 @@ public class Salas implements Serializable {
     public void setExpositores(Expositores expositores) {
         this.expositores = expositores;
     }
-    
-    
 
 }

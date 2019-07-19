@@ -1,8 +1,11 @@
 package com.proyecto.server.dao;
-
-import com.proyecto.server.models.Expositores;
+import javax.transaction.Transactional;
+import org.springframework.stereotype.Repository;
+import com.proyecto.server.model.Expositores;
 import java.util.List;
 
+@Repository
+@Transactional
 public class ExpositoresDaoImpl extends AbstractSession implements ExpositoresDao {
 
     @Override

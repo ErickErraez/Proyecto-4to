@@ -1,4 +1,4 @@
-package com.proyecto.server.models;
+package com.proyecto.server.model;
 
 import java.io.Serializable;
 import javax.persistence.Column;
@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Preguntas")
+@Table(name="preguntas")
 public class Preguntas implements Serializable {
 
     @Id

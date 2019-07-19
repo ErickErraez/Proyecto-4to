@@ -1,6 +1,6 @@
 package com.proyecto.server.services;
 
-import com.proyecto.server.models.Expositores;
+import com.proyecto.server.model.Expositores;
 import java.util.List;
 
 public interface ExpositorServices {

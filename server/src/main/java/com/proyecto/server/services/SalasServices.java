@@ -1,7 +1,7 @@
 package com.proyecto.server.services;
 
 import java.util.List;
-import com.proyecto.server.models.Salas;
+import com.proyecto.server.model.Salas;
 
 public interface SalasServices {
 
