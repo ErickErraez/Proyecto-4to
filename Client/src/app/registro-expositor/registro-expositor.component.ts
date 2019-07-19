@@ -11,7 +11,7 @@ export class RegistroExpositorComponent implements OnInit {
   nombreArchivo: any;
   tipoArchivo: any;
   adjuntoArchivo: any;
-  @ViewChild('fileInput') fileInput;
+  @ViewChild('fileInput' fileInput;
 
   constructor() { }
 
