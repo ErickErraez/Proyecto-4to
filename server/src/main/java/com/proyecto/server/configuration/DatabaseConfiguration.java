@@ -1,7 +1,6 @@
 package com.proyecto.server.configuration;
-import java.sql.SQLException;
-import java.util.Properties;
 
+import java.util.Properties;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +27,7 @@ public class DatabaseConfiguration {
 	@Bean
 	public DataSource dataSource(){
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
-		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
+		dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
                 	dataSource.setUrl("jdbc:mysql://127.0.0.1:3306/ResQuiz?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC"); 
                 dataSource.setUsername("prueba");
 		dataSource.setPassword("123456789");
@@ -40,6 +39,7 @@ public class DatabaseConfiguration {
 	public Properties hibernateProperties(){
 		Properties properties = new Properties();
 		properties.put("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
+                properties.put("hibernate.hbm2ddl.auto","create");
 		properties.put("show_sql", "true");
 		
 		return properties;

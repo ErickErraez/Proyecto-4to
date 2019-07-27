@@ -27,7 +27,6 @@ public class PreguntasController {
     // OBTENER PREGUNTAS POR ID
     @RequestMapping(value = "/obtenerPreguntas/{id}", method = RequestMethod.GET, headers = "Accept=application/json")
     public ResponseEntity<Preguntas> obtenerPreguntas(@PathVariable("id") Long id) {
-        System.out.println("Entro");
         Preguntas preguntas = _preguntasServices.buscarId(id);
         if (preguntas == null) {
             return new ResponseEntity(HttpStatus.NOT_FOUND);

@@ -48,6 +48,7 @@ CREATE TABLE salasPreguntas(
 id INT NOT NULL AUTO_INCREMENT,
 idSala INT,
 idPregunta INT,
+estado VARCHAR(7),
 
 PRIMARY KEY(id)
 );
