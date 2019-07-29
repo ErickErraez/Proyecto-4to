@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Preguntas } from '../Models/preguntas';
 
 @Component({
   selector: 'app-pantalla-hacer-pregunta',
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PantallaHacerPreguntaComponent implements OnInit {
 
-  constructor() { }
+  preguntas: Preguntas;
+
+  constructor() {
+    this.preguntas = new Preguntas();
+  }
 
   ngOnInit() {
   }

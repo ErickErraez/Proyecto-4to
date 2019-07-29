@@ -34,6 +34,9 @@ public class Salas implements Serializable {
 
     @Column(name = "preguntasPermitidas")
     private int preguntasPermitidas;
+    
+    @Column(name = "estado")
+    private String estado;
 
     @ManyToOne(optional = true, fetch = FetchType.EAGER)
     @JoinColumn(name = "idExpositor")
@@ -153,4 +156,15 @@ public class Salas implements Serializable {
         this.expositores = expositores;
     }
 
+     public String getEstado() {
+        return estado;
+    }
+
+    /**
+     * @param estado the estado to set
+     */
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+    
 }

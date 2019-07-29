@@ -71,6 +71,7 @@ public class SalasController {
         salasUpdate.setTema(salasUpdate.getTema());
         salasUpdate.setCapacidad(salasUpdate.getCapacidad());
         salasUpdate.setPreguntasPermitidas(salasUpdate.getPreguntasPermitidas());
+        salasUpdate.setEstado(salasUpdate.getEstado());
         salasUpdate.setExpositores(salasUpdate.getExpositores());
 
         _salaServices.actualizarSalas(salasUpdate);

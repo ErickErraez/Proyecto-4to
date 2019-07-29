@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Sala } from '../Models/sala';
 
 @Component({
   selector: 'app-crear-sala',
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CrearSalaComponent implements OnInit {
 
-  constructor() { }
+  sala: Sala;
+
+  constructor() {
+    this.sala = new Sala();
+  }
 
   ngOnInit() {
   }
