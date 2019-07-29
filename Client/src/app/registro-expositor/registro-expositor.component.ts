@@ -51,7 +51,7 @@ export class RegistroExpositorComponent implements OnInit {
       }).catch(e => {
         console.log(e);
       });
-    }).catch(ERROR => {
+    }).catch(error => {
     });
   }
   obtenerExpo() {
