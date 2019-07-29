@@ -1,3 +1,5 @@
+import { Images } from './images';
+
 export class Expositor {
     id?: number;
     nombre: string;
@@ -6,4 +8,5 @@ export class Expositor {
     telefono: string;
     institucion: string;
     titulo: string;
+    imagenes: Images;
 }

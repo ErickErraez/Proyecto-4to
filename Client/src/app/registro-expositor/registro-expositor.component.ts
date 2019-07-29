@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Images } from '../Models/images';
 import { Expositor } from '../Models/expositor';
 import { ExpositorService } from '../services/expositor.service';
+import { ImagesService } from '../services/images.service';
 
 @Component({
   selector: 'app-registro-expositor',
@@ -14,12 +15,13 @@ export class RegistroExpositorComponent implements OnInit {
   expositor: Expositor;
   images: Images;
 
-  constructor(private expositorServices: ExpositorService) {
+  constructor(private expositorServices: ExpositorService, private imagenServices: ImagesService) {
     this.images = new Images();
     this.expositor = new Expositor();
   }
 
   ngOnInit() {
+    this.obtenerExpo();
   }
 
   CodificarArchivo(event) {
@@ -39,11 +41,25 @@ export class RegistroExpositorComponent implements OnInit {
 
   guardarExpositor() {
 
-    this.expositorServices.postExpositor(this.expositor).then(r => {
-
+    this.imagenServices.postImages(this.images).then(res => {
+      this.expositorServices.postExpositor(this.expositor).then(r => {
+        this.expositor = r;
+        this.expositor.imagenes = res;
+        this.expositorServices.putExpositorImg(this.expositor).then(respuesta => {
+          console.log('ok');
+        });
+      }).catch(e => {
+        console.log(e);
+      });
+    }).catch(ERROR => {
+    });
+  }
+  obtenerExpo() {
+    this.expositorServices.getAllExpositores().then(r => {
+      console.log(r);
     }).catch(e => {
 
-    });
+    })
   }
 
 }

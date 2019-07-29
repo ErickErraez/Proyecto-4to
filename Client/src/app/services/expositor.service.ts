@@ -13,11 +13,19 @@ export class ExpositorService {
   constructor(private http: HttpClient) { }
 
   getExpositorById(id) {
-    return this.http.get(this.url + 'obtenerExpositor' + id);
+    return this.http.get(this.url + 'obtenerExpositor' + id).toPromise().then(r => {
+      return r;
+    }).catch(e => {
+      return e.body;
+    });
   }
 
   getAllExpositores() {
-    return this.http.get(this.url + 'obtenerExpositores');
+    return this.http.get(this.url + 'obtenerExpositores').toPromise().then(r => {
+      return r;
+    }).catch(e => {
+      return e.body;
+    });
   }
 
   postExpositor(expositor: Expositor) {
@@ -26,6 +34,15 @@ export class ExpositorService {
     }).catch(e => {
       return e.body;
     });
+  }
+
+  putExpositorImg(expositor: Expositor) {
+    return this.http.put(this.url + 'expofoto', expositor).toPromise().then(r => {
+      return r;
+    }).catch(e => {
+      return e.body;
+    });
+
   }
 
 }
