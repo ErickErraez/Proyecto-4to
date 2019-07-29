@@ -5,66 +5,53 @@
                 <h2 style="color:rgb(0,123,255);">Registro de Expositor</h2>
             </div>
             <div class="card-body">
-                <img src="../../assets/image/director.png" width="100" height="auto" class="rounded float-center"
-                    alt="...">
-                <p></p>
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-
-                        <span class="input-group-text" id="inputGroupFileAddon01">Subir Foto</span>
-                    </div>
-                    <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="inputGroupFile01"
-                            aria-describedby="inputGroupFileAddon01">
-                        <label class="custom-file-label" for="inputGroupFile01">Seleccionar Imagen</label>
-                    </div>
+                <div class="col-md-4">
+                    <label for="formGroupExampleInput">
+                        <h5> Subir Archivo:</h5>
+                    </label> <br />
+                    <img (click)="fileInput.click()" class="card-img fotoPerfilPortada image-rounded" src="{{srcFoto}}" width="150px" height="150px" /> <br> <br>
+                    <input hidden=true type="file" style="display: none;" #fileInput (change)="CodificarArchivo($event)" accept="image/*">
                 </div>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon1">Nombre</span>
                     </div>
-                    <input type="text" class="form-control" placeholder="Nombre" aria-label="Username"
-                        aria-describedby="basic-addon1">
+                    <input type="text" class="form-control" placeholder="Nombre" aria-label="Username" aria-describedby="basic-addon1">
                 </div>
                 <p></p>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon1">Apellido</span>
                     </div>
-                    <input type="text" class="form-control" placeholder="apellido" aria-label="Username"
-                        aria-describedby="basic-addon1">
+                    <input type="text" class="form-control" placeholder="apellido" aria-label="Username" aria-describedby="basic-addon1">
                 </div>
                 <p></p>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon1">Correo</span>
                     </div>
-                    <input type="text" class="form-control" placeholder="Correo" aria-label="Username"
-                        aria-describedby="basic-addon1">
+                    <input type="text" class="form-control" placeholder="Correo" aria-label="Username" aria-describedby="basic-addon1">
                 </div>
                 <p></p>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon1">Teléfono</span>
                     </div>
-                    <input type="text" class="form-control" placeholder="Teléfono de contacto" aria-label="Username"
-                        aria-describedby="basic-addon1">
+                    <input type="text" class="form-control" placeholder="Teléfono de contacto" aria-label="Username" aria-describedby="basic-addon1">
                 </div>
                 <p></p>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon1">Institución</span>
                     </div>
-                    <input type="text" class="form-control" placeholder="Institución" aria-label="Username"
-                        aria-describedby="basic-addon1">
+                    <input type="text" class="form-control" placeholder="Institución" aria-label="Username" aria-describedby="basic-addon1">
                 </div>
                 <p></p>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon1">Título</span>
                     </div>
-                    <input type="text" class="form-control" placeholder="Título del Expositor" aria-label="Username"
-                        aria-describedby="basic-addon1">
+                    <input type="text" class="form-control" placeholder="Título del Expositor" aria-label="Username" aria-describedby="basic-addon1">
                 </div>
                 <p></p>
                 <div>
