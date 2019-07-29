@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { PreguntasService } from '../services/pregunta.service';
-import { PruebaService } from '../services/prueba.service';
 
 @Component({
   selector: 'app-pantalla-preguntas',
@@ -9,10 +8,7 @@ import { PruebaService } from '../services/prueba.service';
 })
 export class PantallaPreguntasComponent implements OnInit {
 
-  constructor(private prueba: PruebaService) {
- this.prueba.getPreguntas();
-  
-   }
+  constructor() {}
 
   ngOnInit() {
   }

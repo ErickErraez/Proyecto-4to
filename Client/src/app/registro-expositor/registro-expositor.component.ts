@@ -1,4 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { Images } from '../Models/images';
+import { Expositor } from '../Models/expositor';
+import { ExpositorService } from '../services/expositor.service';
 
 @Component({
   selector: 'app-registro-expositor',
@@ -8,11 +11,13 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 export class RegistroExpositorComponent implements OnInit {
 
   srcFoto: any = 'assets/image/director.png';
-  nombreArchivo: any;
-  tipoArchivo: any;
-  adjuntoArchivo: any;
+  expositor: Expositor;
+  images: Images;
 
-  constructor() { }
+  constructor(private expositorServices: ExpositorService) {
+    this.images = new Images();
+    this.expositor = new Expositor();
+  }
 
   ngOnInit() {
   }
@@ -24,13 +29,21 @@ export class RegistroExpositorComponent implements OnInit {
       reader.readAsDataURL(file);
       reader.onload = () => {
         console.log(file);
-        this.nombreArchivo = file.name;
-        this.tipoArchivo = file.type;
-        this.adjuntoArchivo = reader.result.toString().split(',')[1];
-        this.srcFoto = 'data:' + this.tipoArchivo + ';base64,' + this.adjuntoArchivo;
+        this.images.nombre = file.name;
+        this.images.tipo = file.type;
+        this.images.adjunto = reader.result.toString().split(',')[1];
+        this.srcFoto = 'data:' + this.images.tipo + ';base64,' + this.images.adjunto;
       };
     }
   }
 
+  guardarExpositor() {
+
+    this.expositorServices.postExpositor(this.expositor).then(r => {
+
+    }).catch(e => {
+
+    });
+  }
+
 }
-  

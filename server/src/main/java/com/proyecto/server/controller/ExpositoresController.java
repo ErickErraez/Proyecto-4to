@@ -16,6 +16,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import com.proyecto.server.model.Expositores;
 import com.proyecto.server.services.ExpositorServices;
+import com.proyecto.server.services.ImagenesServices;
 
 @Controller
 @RequestMapping(value = "/expositores")
@@ -24,6 +25,8 @@ public class ExpositoresController {
 
     @Autowired
     private ExpositorServices _expositorServices;
+    @Autowired
+    private ImagenesServices _imageServices;
 
     // OBTENER EXPOSITORES POR ID
     @RequestMapping(value = "/obtenerExpositor/{id}", method = RequestMethod.GET, headers = "Accept=application/json")
