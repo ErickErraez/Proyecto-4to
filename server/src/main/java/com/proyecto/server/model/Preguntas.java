@@ -25,17 +25,21 @@ public class Preguntas implements Serializable {
 
     @Column(name = "correo")
     private String correo;
+    
+    @Column(name = "estadoUs")
+    private Boolean estadoUs;
 
     public Preguntas() {
         super();
         // TODO Auto-generated constructor stub
     }
 
-    public Preguntas(String pregunta, String nombre, String correo) {
+    public Preguntas(String pregunta, String nombre, String correo, Boolean estadoUs) {
         super();
         this.pregunta = pregunta;
         this.nombre = nombre;
         this.correo = correo;
+        this.estadoUs = estadoUs;
     }
 
     /**
@@ -93,5 +97,21 @@ public class Preguntas implements Serializable {
     public void setCorreo(String correo) {
         this.correo = correo;
     }
+
+    /**
+     * @return the estadoUs
+     */
+    public Boolean getEstadoUs() {
+        return estadoUs;
+    }
+
+    /**
+     * @param estadoUs the estadoUs to set
+     */
+    public void setEstadoUs(Boolean estadoUs) {
+        this.estadoUs = estadoUs;
+    }
+    
+    
 
 }

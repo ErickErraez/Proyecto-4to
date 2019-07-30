@@ -11,6 +11,8 @@ public interface SalasServices {
 
     Salas guardarSalas(Salas salas);
 
+    Salas buscarCodigo(String codigo);
+
     void borrarSalas(Long id);
 
     List<Salas> traerTodos();

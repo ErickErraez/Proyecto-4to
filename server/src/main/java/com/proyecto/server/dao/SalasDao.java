@@ -10,6 +10,8 @@ public interface SalasDao {
     Salas actualizarSalas(Salas salas);
 
     Salas guardarSalas(Salas salas);
+    
+    Salas buscarCodigo(String codigo);
 
     void borrarSalas(Long id);
 

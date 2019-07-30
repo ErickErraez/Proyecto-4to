@@ -96,9 +96,9 @@ public class SalasController {
 
         return new ResponseEntity("Se ha borrado con exito", HttpStatus.OK);
     }
-    
+
     //ASIGNAR EXPOSITOR A LA SALA
-     @RequestMapping(value = "/salaexpo", method = RequestMethod.PUT, headers = "Accept=application/json")
+    @RequestMapping(value = "/salaexpo", method = RequestMethod.PUT, headers = "Accept=application/json")
     public ResponseEntity<Salas> expositoresToImage(@RequestBody Salas sala,
             UriComponentsBuilder ucBuilder) {
 
@@ -117,6 +117,16 @@ public class SalasController {
         _salaServices.actualizarSalas(salasSaved);
 
         return new ResponseEntity<Salas>(salasSaved, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/obtenerSalas/{codigo}", method = RequestMethod.GET, headers = "Accept=application/json")
+    public ResponseEntity<Salas> obtenerSalas(@PathVariable("codigo") String codigo) {
+        Salas salas = _salaServices.buscarCodigo(codigo);
+        if (salas == null) {
+            return new ResponseEntity(HttpStatus.NOT_FOUND);
+            // You many decide to return HttpStatus.NOT_FOUND
+        }
+        return new ResponseEntity<Salas>(salas, HttpStatus.OK);
     }
 
 }
