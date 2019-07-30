@@ -12,11 +12,7 @@ import { PantallaPreguntasComponent } from './pantalla-preguntas/pantalla-pregun
 import { PantallaAccesoSalaComponent } from './pantalla-acceso-sala/pantalla-acceso-sala.component';
 import { PantallaHacerPreguntaComponent } from './pantalla-hacer-pregunta/pantalla-hacer-pregunta.component';
 import { InicioComponent } from './inicio/inicio.component';
-<<<<<<< Updated upstream
-
-=======
 import { NavbarComponent } from './navbar/navbar.component';
->>>>>>> Stashed changes
 
 @NgModule({
   declarations: [
@@ -26,12 +22,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     PantallaPreguntasComponent,
     PantallaAccesoSalaComponent,
     PantallaHacerPreguntaComponent,
-<<<<<<< Updated upstream
-    InicioComponent
-=======
     InicioComponent,
     NavbarComponent
->>>>>>> Stashed changes
   ],
   imports: [
     BrowserModule,
