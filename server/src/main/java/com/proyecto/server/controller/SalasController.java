@@ -1,6 +1,8 @@
 package com.proyecto.server.controller;
 
+import com.proyecto.server.model.Expositores;
 import com.proyecto.server.model.Salas;
+import com.proyecto.server.services.ExpositorServices;
 import com.proyecto.server.services.SalasServices;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +24,8 @@ public class SalasController {
 
     @Autowired
     private SalasServices _salaServices;
+    @Autowired
+    private ExpositorServices _expositorServices;
 
     // OBTENER SALAS POR ID
     @RequestMapping(value = "/obtenerSalas/{id}", method = RequestMethod.GET, headers = "Accept=application/json")
@@ -91,6 +95,28 @@ public class SalasController {
         _salaServices.borrarSalas(id);
 
         return new ResponseEntity("Se ha borrado con exito", HttpStatus.OK);
+    }
+    
+    //ASIGNAR EXPOSITOR A LA SALA
+     @RequestMapping(value = "/salaexpo", method = RequestMethod.PUT, headers = "Accept=application/json")
+    public ResponseEntity<Salas> expositoresToImage(@RequestBody Salas sala,
+            UriComponentsBuilder ucBuilder) {
+
+        if (sala.getId() == null || sala.getExpositores().getId() == null) {
+            return new ResponseEntity("Faltan Datos", HttpStatus.CONFLICT);
+        }
+        Salas salasSaved = _salaServices.buscarId(sala.getId());
+        if (salasSaved == null) {
+            return new ResponseEntity("No se Encontro", HttpStatus.CONFLICT);
+        }
+        Expositores expositor = _expositorServices.buscarId(sala.getExpositores().getId());
+        if (expositor == null) {
+            return new ResponseEntity("No se Encontro", HttpStatus.CONFLICT);
+        }
+        salasSaved.setExpositores(expositor);
+        _salaServices.actualizarSalas(salasSaved);
+
+        return new ResponseEntity<Salas>(salasSaved, HttpStatus.OK);
     }
 
 }

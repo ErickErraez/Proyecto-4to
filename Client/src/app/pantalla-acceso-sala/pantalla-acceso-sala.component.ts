@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PantallaAccesoSalaComponent implements OnInit {
 
+  codigoQr: string;
+
   constructor() { }
 
   ngOnInit() {
+    this.codigoQr = 'http://192.168.1.8:4200/formular-pregunta';
   }
 
 }

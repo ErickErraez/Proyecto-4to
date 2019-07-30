@@ -13,7 +13,7 @@ export class ExpositorService {
   constructor(private http: HttpClient) { }
 
   getExpositorById(id) {
-    return this.http.get(this.url + 'obtenerExpositor' + id).toPromise().then(r => {
+    return this.http.get(this.url + 'obtenerExpositor/' + id).toPromise().then(r => {
       return r;
     }).catch(e => {
       return e.body;
@@ -28,7 +28,7 @@ export class ExpositorService {
     });
   }
 
-  postExpositor(expositor: Expositor) {
+  postExpositor(expositor) {
     return this.http.post(this.url + 'guardarExpositores', expositor).toPromise().then(r => {
       return r;
     }).catch(e => {

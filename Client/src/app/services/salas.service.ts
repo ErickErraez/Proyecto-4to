@@ -28,7 +28,7 @@ export class SalaService {
     });
   }
 
-  postExpositor(sala: Sala) {
+  postSala(sala: Sala) {
     return this.http.post(this.url + 'guardarSalas', sala).toPromise().then(r => {
       return r;
     }).catch(e => {

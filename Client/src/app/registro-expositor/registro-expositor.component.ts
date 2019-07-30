@@ -40,7 +40,6 @@ export class RegistroExpositorComponent implements OnInit {
   }
 
   guardarExpositor() {
-
     this.imagenServices.postImages(this.images).then(res => {
       this.expositorServices.postExpositor(this.expositor).then(r => {
         this.expositor = r;
