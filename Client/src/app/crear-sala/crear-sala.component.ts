@@ -49,17 +49,19 @@ export class CrearSalaComponent implements OnInit {
   obtenerExpositor(id) {
     this.expositoresServices.getExpositorById(parseInt(id)).then(res => {
       this.expositor = res;
+      this.sala.expositores = this.expositor;
+      this.salaServices.postSala(this.sala).then(response => {
+        console.log(response);
+      }).catch(error => {
+
+      });
     }).catch(er => {
 
     });
   }
   guardarSala() {
-    this.sala.expositores = this.expositor;
-    this.salaServices.postSala(this.sala).then(response => {
-      console.log(response);
-    }).catch(error => {
+    this.obtenerExpositor(this.expositor.id);
 
-    });
   }
 
 }

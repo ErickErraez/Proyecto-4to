@@ -6,18 +6,13 @@ import { PantallaHacerPreguntaComponent } from './pantalla-hacer-pregunta/pantal
 import { RegistroExpositorComponent } from './registro-expositor/registro-expositor.component';
 import { PantallaPreguntasComponent } from './pantalla-preguntas/pantalla-preguntas.component';
 import { InicioComponent } from './inicio/inicio.component';
-import { RegistroUsuarioComponent } from './registro-usuario/registro-usuario.component';
+
 
 const routes: Routes = [
   { path: 'crear-sala', component: CrearSalaComponent },
   { path: 'acceso', component: PantallaAccesoSalaComponent },
-<<<<<<< HEAD
-  { path: 'formular-pregunta', component: PantallaHacerPreguntaComponent },
-=======
-  { path: 'preguntar/:id', component: PantallaHacerPreguntaComponent },
->>>>>>> feature/Ng_Models_Y_Pruebas_de_Coneccion
+  { path: 'formular-pregunta/:codigo', component: PantallaHacerPreguntaComponent },
   { path: 'registro-expositor', component: RegistroExpositorComponent },
-  { path: 'registro-usuario', component: RegistroUsuarioComponent },
   { path: 'listado-preguntas', component: PantallaPreguntasComponent },
   { path: 'inicio', component: InicioComponent },
   { path: '', redirectTo: '/inicio', pathMatch: 'full' }

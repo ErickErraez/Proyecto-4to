@@ -12,7 +12,7 @@ import { PantallaPreguntasComponent } from './pantalla-preguntas/pantalla-pregun
 import { PantallaAccesoSalaComponent } from './pantalla-acceso-sala/pantalla-acceso-sala.component';
 import { PantallaHacerPreguntaComponent } from './pantalla-hacer-pregunta/pantalla-hacer-pregunta.component';
 import { InicioComponent } from './inicio/inicio.component';
-import { RegistroUsuarioComponent } from './registro-usuario/registro-usuario.component';
+
 
 @NgModule({
   declarations: [
@@ -22,8 +22,7 @@ import { RegistroUsuarioComponent } from './registro-usuario/registro-usuario.co
     PantallaPreguntasComponent,
     PantallaAccesoSalaComponent,
     PantallaHacerPreguntaComponent,
-    InicioComponent,
-    RegistroUsuarioComponent
+    InicioComponent
   ],
   imports: [
     BrowserModule,

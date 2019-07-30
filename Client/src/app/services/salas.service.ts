@@ -13,7 +13,7 @@ export class SalaService {
   constructor(private http: HttpClient) { }
 
   getSalaById(id) {
-    return this.http.get(this.url + 'obtenerSalas' + id).toPromise().then(r => {
+    return this.http.get(this.url + 'obtenerSalas/' + id).toPromise().then(r => {
       return r;
     }).catch(e => {
       return e.body;

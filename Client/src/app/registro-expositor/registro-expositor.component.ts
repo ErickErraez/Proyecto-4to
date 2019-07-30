@@ -58,7 +58,7 @@ export class RegistroExpositorComponent implements OnInit {
       console.log(r);
     }).catch(e => {
 
-    })
+    });
   }
 
 }

@@ -11,15 +11,15 @@ export class PreguntasService {
 
    constructor(private http: HttpClient) { }
 
-   getSalaById(id) {
-      return this.http.get(this.url + 'obtenerPreguntas' + id).toPromise().then(r => {
+   getPreguntasById(id) {
+      return this.http.get(this.url + 'obtenerPreguntas/' + id).toPromise().then(r => {
         return r;
       }).catch(e => {
         return e.body;
       });
     }
 
-    getAllSala() {
+    getAllPreguntas() {
       return this.http.get(this.url + 'obtenerPreguntas').toPromise().then(r => {
         return r;
       }).catch(e => {
@@ -27,7 +27,7 @@ export class PreguntasService {
       });
     }
 
-    postExpositor(preguntas: Preguntas) {
+    postPreguntas(preguntas: Preguntas) {
       return this.http.post(this.url + 'guardarPreguntas', preguntas).toPromise().then(r => {
         return r;
       }).catch(e => {

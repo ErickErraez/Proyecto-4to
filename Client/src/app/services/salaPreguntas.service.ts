@@ -10,7 +10,7 @@ export class SalaPreguntasService {
   url = environment.url + 'salaPreguntas/';
   constructor(private http: HttpClient) { }
 
-  getImagesById(id) {
+  getSalaPreguntasById(id) {
     return this.http.get(this.url + 'obtenerSalaPreguntas' + id).toPromise().then(r => {
       return r;
     }).catch(e => {
@@ -18,7 +18,7 @@ export class SalaPreguntasService {
     });
   }
 
-  getAllImages() {
+  getAllSalasPreguntas() {
     return this.http.get(this.url + 'obtenerSalaPreguntas').toPromise().then(r => {
       return r;
     }).catch(e => {
@@ -26,7 +26,7 @@ export class SalaPreguntasService {
     });
   }
 
-  postImages(salapreguntas: SalaPregunta) {
+  postSalasPreguntas(salapreguntas: SalaPregunta) {
     return this.http.post(this.url + 'guardarSalaPreguntas', salapreguntas).toPromise().then(r => {
       return r;
     }).catch(e => {
