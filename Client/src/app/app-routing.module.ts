@@ -11,7 +11,7 @@ import { RegistroUsuarioComponent } from './registro-usuario/registro-usuario.co
 const routes: Routes = [
   { path: 'crear-sala', component: CrearSalaComponent },
   { path: 'acceso', component: PantallaAccesoSalaComponent },
-  { path: 'preguntar', component: PantallaHacerPreguntaComponent },
+  { path: 'preguntar/:id', component: PantallaHacerPreguntaComponent },
   { path: 'registro-expositor', component: RegistroExpositorComponent },
   { path: 'registro-usuario', component: RegistroUsuarioComponent },
   { path: 'preguntas', component: PantallaPreguntasComponent },
