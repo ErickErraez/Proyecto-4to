@@ -6,7 +6,10 @@ import { PantallaHacerPreguntaComponent } from './pantalla-hacer-pregunta/pantal
 import { RegistroExpositorComponent } from './registro-expositor/registro-expositor.component';
 import { PantallaPreguntasComponent } from './pantalla-preguntas/pantalla-preguntas.component';
 import { InicioComponent } from './inicio/inicio.component';
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 
 const routes: Routes = [
   { path: 'crear-sala', component: CrearSalaComponent },
