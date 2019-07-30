@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { SalaService } from '../services/salas.service';
+import { Sala } from '../Models/sala';
 
 @Component({
   selector: 'app-pantalla-acceso-sala',
@@ -8,11 +10,37 @@ import { Component, OnInit } from '@angular/core';
 export class PantallaAccesoSalaComponent implements OnInit {
 
   codigoQr: string;
+  salas: any = [];
+  sala: Sala;
+  isSala: boolean;
 
-  constructor() { }
+  constructor(private salaServices: SalaService) {
+    this.sala = new Sala();
+    this.obtenerSalas();
+    this.isSala = false;
+  }
 
   ngOnInit() {
-    this.codigoQr = 'http://192.168.1.8:4200/formular-pregunta';
+
+  }
+
+  obtenerSalas() {
+    this.salaServices.getAllSala().then(r => {
+      this.salas = r;
+      console.log(this.salas);
+    }).catch(e => {
+      console.log(e);
+    });
+  }
+
+  obtenerSala(id) {
+    this.salaServices.getSalaById(parseInt(id)).then(r => {
+      this.sala = r;
+      this.isSala = true;
+      this.codigoQr = 'http://192.168.1.8:4200/formular-pregunta/' + this.sala.codigo;
+    }).catch(e => {
+      console.log(e);
+    });
   }
 
 }
