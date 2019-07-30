@@ -11,7 +11,7 @@ export class SalaPreguntasService {
   constructor(private http: HttpClient) { }
 
   getSalaPreguntasById(id) {
-    return this.http.get(this.url + 'obtenerSalaPreguntas' + id).toPromise().then(r => {
+    return this.http.get(this.url + 'obtenerSalaPreguntas/' + id).toPromise().then(r => {
       return r;
     }).catch(e => {
       return e.body;

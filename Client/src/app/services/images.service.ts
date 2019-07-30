@@ -11,7 +11,7 @@ export class ImagesService {
   constructor(private http: HttpClient) { }
 
   getImagesById(id) {
-    return this.http.get(this.url + 'obtenerImagenes' + id).toPromise().then(r => {
+    return this.http.get(this.url + 'obtenerImagenes/' + id).toPromise().then(r => {
       return r;
     }).catch(e => {
       return e.body;
