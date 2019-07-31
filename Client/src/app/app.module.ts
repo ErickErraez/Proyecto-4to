@@ -6,6 +6,7 @@ import { QRCodeModule } from 'angularx-qrcode';
 import { ToastrModule } from 'ngx-toastr';
 
 import { AppRoutingModule } from './app-routing.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { CrearSalaComponent } from './crear-sala/crear-sala.component';
 import { RegistroExpositorComponent } from './registro-expositor/registro-expositor.component';
@@ -14,7 +15,7 @@ import { PantallaAccesoSalaComponent } from './pantalla-acceso-sala/pantalla-acc
 import { PantallaHacerPreguntaComponent } from './pantalla-hacer-pregunta/pantalla-hacer-pregunta.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { CronometroComponent } from './cronometro/cronometro.component';
+//import { CronometroComponent } from './cronometro/cronometro.component';
 
 @NgModule({
   declarations: [
@@ -26,12 +27,13 @@ import { CronometroComponent } from './cronometro/cronometro.component';
     PantallaHacerPreguntaComponent,
     InicioComponent,
     NavbarComponent,
-    CronometroComponent
+ // CronometroComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    BrowserAnimationsModule,
     ToastrModule.forRoot({
       timeOut: 10000,
       positionClass: 'toast-top-right',

@@ -23,9 +23,9 @@
                     <div class="input-group-prepend">
                         <label class="input-group-text" for="inputGroupSelect01">Expositor</label>
                     </div>
-                    <select class="custom-select" id="inputGroupSelect01" [(ngModel)]="expositor.id" name="id" >
+                    <select class="custom-select" id="inputGroupSelect01" [(ngModel)]="expositor.id" name="id">
             <option selected>Elija un Expositor</option>
-            <option *ngFor="let item of expositores" value="{{item.id}}" > {{item.nombre}} {{item.apellido}}</option>
+            <option *ngFor="let item of expositores" value="{{item.id}}"> {{item.nombre}} {{item.apellido}}</option>
 
           </select>
                 </div>
@@ -47,20 +47,6 @@
                     </div>
                     <input type="number" min="1" [(ngModel)]="sala.preguntasPermitidas" name="preguntasPermitidas" class="form-control" placeholder="Preguntas por Usuario" aria-describedby="basic-addon1">
                 </div>
-
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="basic-addon1">Estado Sala:</span>
-                    </div>
-                    &nbsp; &nbsp; &nbsp; &nbsp;
-                    <label *ngIf="!estado" class="mr-2">Inactivo</label>
-                    <label class="switch">
-            <input type="checkbox" [(ngModel)]="sala.estado" (click)="tipoEstado()">
-            <span class="slider round"></span>
-          </label>
-                    <label *ngIf="estado" class="ml-2">Activo</label>
-                </div>
-
                 <div>
                     <button type="button" class="col-4 btn btn-outline-success" (click)="guardarSala()">Crear Sala</button>
                     <button type="button" class="btn btn-white btn-sm" disabled></button>

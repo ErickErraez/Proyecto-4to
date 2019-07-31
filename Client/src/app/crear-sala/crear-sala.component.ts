@@ -3,6 +3,7 @@ import { Sala } from '../Models/sala';
 import { ExpositorService } from '../services/expositor.service';
 import { Expositor } from '../Models/expositor';
 import { SalaService } from '../services/salas.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-crear-sala',
@@ -16,7 +17,7 @@ export class CrearSalaComponent implements OnInit {
   estado: boolean;
   expositores: any = [];
 
-  constructor(private expositoresServices: ExpositorService, private salaServices: SalaService) {
+  constructor(private expositoresServices: ExpositorService, private salaServices: SalaService, private toastr: ToastrService) {
     this.sala = new Sala();
     this.expositor = new Expositor();
   }
@@ -25,16 +26,6 @@ export class CrearSalaComponent implements OnInit {
     this.estado = false;
     this.sala.codigo = Math.random().toString(36).substring(7).toUpperCase();
     this.obtenerExpositores();
-  }
-
-  tipoEstado() {
-    if (this.estado) {
-      this.estado = false;
-      this.sala.estado = 'Inactivo';
-    } else {
-      this.estado = true;
-      this.sala.estado = 'Activo';
-    }
   }
 
   obtenerExpositores() {
@@ -51,15 +42,17 @@ export class CrearSalaComponent implements OnInit {
       this.expositor = res;
       this.sala.expositores = this.expositor;
       this.salaServices.postSala(this.sala).then(response => {
+        this.toastr.success('Registo de Sala!', 'Creado con Exito!');
         console.log(response);
       }).catch(error => {
-
+        this.toastr.error('Los Datos Son Incorrectos!', 'Oops algo ha salido mal!');
       });
     }).catch(er => {
 
     });
   }
   guardarSala() {
+    this.sala.estado = 'Inactivo';
     this.obtenerExpositor(this.expositor.id);
 
   }

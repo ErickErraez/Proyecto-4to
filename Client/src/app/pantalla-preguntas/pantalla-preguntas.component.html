@@ -1,62 +1,78 @@
 <div class="container">
-    <div class="row justify-content-md-center">
+    <div class="row justify-content-md-center" *ngIf="!isSala">
         <div id="fondo" class="card  col-md-11">
             <div class="card-header">
-                <h2 style="color:#045bb2;">Listado de Preguntas</h2>
+                <h2 style="color:#045bb2;">Seleccione la Sala</h2>
             </div>
             <div class="card-body">
-                <div class="row">
-                    <div class="col">
-                        <img src="../../assets/image/director.png" width="100" height="auto" class="rounded float-left" alt="...">
-                        <p></p>
-                        <h5>Nombre: Expositor 1</h5>
-                        <p></p>
-                        <h5>Tema: Prototipo</h5>
-                        <p></p>
-                    </div>
-                    <div class="col">
-                        <app-cronometro></app-cronometro>
-                        <div class="text-right">
-                            <button type="button" class="col-6 btn btn-outline-info">Exportar Preguntas</button>
+                <select class="custom-select" id="inputGroupSelect01" [(ngModel)]="sala.id" name="id">
+          <option selected>Elija una Sala</option>
+          <option *ngFor="let item of salas" value="{{item.id}}"> {{item.nombre}}</option>
+        </select>
+                <button type="button" class="col-4 btn btn-outline-success" (click)="obtenerSala(sala.id)">Crear
+          Accesos</button>
+            </div>
+        </div>
+    </div>
+    <ng-container *ngIf="isSala">
+        <div class="row justify-content-md-center">
+            <div id="fondo" class="card  col-md-11">
+                <div class="card-header">
+                    <h2 style="color:#045bb2;">Listado de Preguntas</h2>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <img src="../../assets/image/director.png" width="100" height="auto" class="rounded float-left" alt="...">
+                            <p></p>
+                            <h5>Nombre: Expositor 1</h5>
+                            <p></p>
+                            <h5>Tema: Prototipo</h5>
+                            <p></p>
+                        </div>
+                        <div class="col">
+                            <!--<app-cronometro></app-cronometro>-->
+                            <div class="text-right">
+                                <button type="button" class="col-6 btn btn-outline-info">Exportar Preguntas</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <br />
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">Nombre de Usuario</th>
-                <th scope="col">Correo</th>
-                <th scope="col">Pregunta</th>
-                <th scope="col">Seleccionar</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Mark</td>
-                <td>@mdo</td>
-                <td>Como se puede realizar?</td>
-                <td><input type="checkbox" aria-label="Checkbox for following text input">
-                </td>
-            </tr>
-            <tr>
-                <td>Jacob</td>
-                <td>@fat</td>
-                <td>Cuál es el Costo de Implementación?</td>
-                <td><input type="checkbox" aria-label="Checkbox for following text input">
-                </td>
-            </tr>
-            <tr>
-                <td>Larry</td>
-                <td>@twitter</td>
-                <td>Es Seguro?</td>
-                <td><input type="checkbox" aria-label="Checkbox for following text input">
-                </td>
-            </tr>
-        </tbody>
-    </table>
-
+        <br />
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Nombre de Usuario</th>
+                    <th scope="col">Correo</th>
+                    <th scope="col">Pregunta</th>
+                    <th scope="col">Seleccionar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Mark</td>
+                    <td>@mdo</td>
+                    <td>Como se puede realizar?</td>
+                    <td><input type="checkbox" aria-label="Checkbox for following text input">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Jacob</td>
+                    <td>@fat</td>
+                    <td>Cuál es el Costo de Implementación?</td>
+                    <td><input type="checkbox" aria-label="Checkbox for following text input">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Larry</td>
+                    <td>@twitter</td>
+                    <td>Es Seguro?</td>
+                    <td><input type="checkbox" aria-label="Checkbox for following text input">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </ng-container>
 </div>

@@ -9,7 +9,8 @@
           <option selected>Elija una Sala</option>
           <option *ngFor="let item of salas" value="{{item.id}}"> {{item.nombre}}</option>
         </select>
-                <button type="button" class="col-4 btn btn-outline-success" (click)="obtenerSala(sala.id)">Crear Accesos</button>
+                <button type="button" class="col-4 btn btn-outline-success" (click)="obtenerSala(sala.id)">Crear
+          Accesos</button>
 
                 <ng-container *ngIf="isSala">
                     <qrcode [qrdata]="codigoQr" [size]="230" [level]="'L'"></qrcode>
