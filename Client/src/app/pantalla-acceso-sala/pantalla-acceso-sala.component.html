@@ -6,7 +6,6 @@
             </div>
             <div class="card-body text-center">
                 <select class="custom-select" id="inputGroupSelect01" [(ngModel)]="sala.id" name="id">
-          <option selected>Elija una Sala</option>
           <option *ngFor="let item of salas" value="{{item.id}}"> {{item.nombre}}</option>
         </select>
                 <button type="button" class="col-4 btn btn-outline-success" (click)="obtenerSala(sala.id)">Crear

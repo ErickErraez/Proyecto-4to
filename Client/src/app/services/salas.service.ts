@@ -36,8 +36,16 @@ export class SalaService {
     });
   }
 
-  postSala(sala: Sala) {
+  postSala(sala) {
     return this.http.post(this.url + 'guardarSalas', sala).toPromise().then(r => {
+      return r;
+    }).catch(e => {
+      return e.body;
+    });
+  }
+
+  putSala(sala){
+    return this.http.put(this.url + 'actualizarSalas/'  + sala.id, sala).toPromise().then(r => {
       return r;
     }).catch(e => {
       return e.body;

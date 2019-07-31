@@ -6,11 +6,10 @@
             </div>
             <div class="card-body">
                 <select class="custom-select" id="inputGroupSelect01" [(ngModel)]="sala.id" name="id">
-          <option selected>Elija una Sala</option>
-          <option *ngFor="let item of salas" value="{{item.id}}"> {{item.nombre}}</option>
-        </select>
-                <button type="button" class="col-4 btn btn-outline-success" (click)="obtenerSala(sala.id)">Crear
-          Accesos</button>
+                    <option *ngFor="let item of salas" value="{{item.id}}"> {{item.nombre}}</option>
+                </select>
+                <button type="button" class="col-4 btn btn-outline-success" (click)="obtenerSala(sala.id)">Seleccionar
+                    Sala</button>
             </div>
         </div>
     </div>
@@ -19,20 +18,41 @@
             <div id="fondo" class="card  col-md-11">
                 <div class="card-header">
                     <h2 style="color:#045bb2;">Listado de Preguntas</h2>
+
                 </div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col">
-                            <img src="../../assets/image/director.png" width="100" height="auto" class="rounded float-left" alt="...">
+                            <img src="data:{{sala.expositores.imagenes.tipo}};base64,{{sala.expositores.imagenes.adjunto}}"
+                                width="100" height="auto" class="rounded float-left" alt="...">
                             <p></p>
-                            <h5>Nombre: Expositor 1</h5>
+                            <h5>Nombre Expositor: {{sala.expositores.nombre}}&nbsp;{{sala.expositores.apellido}} </h5>
                             <p></p>
-                            <h5>Tema: Prototipo</h5>
+                            <h5>Tema: {{sala.tema}}</h5>
                             <p></p>
                         </div>
                         <div class="col">
-                            <!--<app-cronometro></app-cronometro>-->
+                            <div class="cronometro-body">
+                                <h4 style="color:#045bb2;">Tiempo</h4>
+                                <p></p>
+                                <div class="input-group-prepend">
+                                    <h3>{{hora}} : {{minutos}} : {{segundos}}</h3>
+                                </div>
+                                <div class="buttons">
+                                    <button class="col-2 btn btn-outline-success btn-sm" (click)="start()"> Iniciar
+                                    </button>
+                                    <button type="button" class="btn btn-white btn-sm" disabled></button>
+                                    <!--   <button (click)="lapso()"> Lapso </button>-->
+                                    <button class="col-2 btn btn-outline-danger btn-sm" (click)="stop()"> Parar
+                                    </button>
+
+                                </div>
+                            </div>
+                            <br>
+                            <p></p>
                             <div class="text-right">
+                                <button type="button" class="col-6 btn btn-outline-danger"
+                                    (click)="isSala = false">Seleccionar Sala</button>
                                 <button type="button" class="col-6 btn btn-outline-info">Exportar Preguntas</button>
                             </div>
                         </div>
@@ -41,6 +61,14 @@
             </div>
         </div>
         <br />
+        <div id="fondo" class="card-body">
+            <div class="row">
+                <div class="col">
+                    <button type="button" class="col-1 btn btn-info"
+                        (click)="obtenerSalaPreguntas()">Refrescar</button>
+                </div>
+            </div>
+        </div>
         <table class="table">
             <thead>
                 <tr>
@@ -51,27 +79,15 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Mark</td>
-                    <td>@mdo</td>
-                    <td>Como se puede realizar?</td>
-                    <td><input type="checkbox" aria-label="Checkbox for following text input">
-                    </td>
-                </tr>
-                <tr>
-                    <td>Jacob</td>
-                    <td>@fat</td>
-                    <td>Cuál es el Costo de Implementación?</td>
-                    <td><input type="checkbox" aria-label="Checkbox for following text input">
-                    </td>
-                </tr>
-                <tr>
-                    <td>Larry</td>
-                    <td>@twitter</td>
-                    <td>Es Seguro?</td>
-                    <td><input type="checkbox" aria-label="Checkbox for following text input">
-                    </td>
-                </tr>
+                <ng-container *ngFor="let item of salaPreguntas; let indice=index;">
+                    <tr *ngIf="item.salas.id == sala.id">
+                        <td>{{item.preguntas.nombre}}</td>
+                        <td>{{item.preguntas.correo}}</td>
+                        <td>{{item.preguntas.pregunta}}</td>
+                        <td>{{indice+1}}<input id="{{indice+1}}" type="checkbox" (click)="onSelect(item.preguntas)" aria-label="Checkbox for following text input">
+                        </td>
+                    </tr>
+                </ng-container>
             </tbody>
         </table>
     </ng-container>

@@ -6,6 +6,7 @@ import { SalaService } from '../services/salas.service';
 import { Sala } from '../Models/sala';
 import { SalaPreguntasService } from '../services/salaPreguntas.service';
 import { SalaPregunta } from '../Models/salaPregunta';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-pantalla-hacer-pregunta',
@@ -18,21 +19,21 @@ export class PantallaHacerPreguntaComponent implements OnInit {
   preguntas: Preguntas;
   sala: Sala;
   salaPreguntas: SalaPregunta;
+  cont: number = 0;
 
   constructor(private root: ActivatedRoute, private salaPreguntaServices: SalaPreguntasService,
-    private preguntasService: PreguntasService, private salaServices: SalaService) {
+    private preguntasService: PreguntasService, private salaServices: SalaService, private toastr: ToastrService) {
     this.preguntas = new Preguntas();
     this.salaPreguntas = new SalaPregunta();
     this.sala = new Sala();
     this.codigo = this.root.snapshot.params['codigo'];
-    this.obtenerPreguntaById();
+    this.obtenerSala();
   }
   ngOnInit() {
     sessionStorage.setItem('showNav', 'false');
   }
 
-  obtenerPreguntaById() {
-    console.log(this.codigo);
+  obtenerSala() {
     this.salaServices.getSalaByCode(this.codigo).then(response => {
       this.sala = response;
     }).catch(e => {
@@ -41,18 +42,28 @@ export class PantallaHacerPreguntaComponent implements OnInit {
   }
 
   guardarPregunta() {
-    this.preguntasService.postPreguntas(this.preguntas).then(r => {
-      this.preguntas = r;
-      this.salaPreguntas.salas = this.sala;
-      this.salaPreguntas.preguntas = this.preguntas;
-      this.salaPreguntaServices.postSalasPreguntas(this.salaPreguntas).then(res => {
-        console.log(res);
-      }).catch(e => {
+    this.obtenerSala();
+    if (this.cont < this.sala.preguntasPermitidas) {
+      if (this.sala.estado === 'Activo') {
+        this.preguntasService.postPreguntas(this.preguntas).then(r => {
+          this.preguntas = r;
+          this.salaPreguntas.salas = this.sala;
+          this.salaPreguntas.preguntas = this.preguntas;
+          this.salaPreguntaServices.postSalasPreguntas(this.salaPreguntas).then(res => {
+            this.cont += 1;
+            this.toastr.success('Felicitaciones!', 'La pregunta se ha registrado con exito');
+            this.preguntas = new Preguntas();
+          }).catch(e => {
 
-      });
-    }).catch(e => {
+          });
+        }).catch(e => {
 
-    });
+        });
+      }
+      if (this.sala.estado === 'Inactivo') {
+        this.toastr.error('La sala se ha cerrado!', 'Oops lo sentimos!');
+      }
+    }
   }
 
 }
