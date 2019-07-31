@@ -43,6 +43,7 @@ export class CrearSalaComponent implements OnInit {
       this.sala.expositores = this.expositor;
       this.salaServices.postSala(this.sala).then(response => {
         this.toastr.success('Registo de Sala!', 'Creado con Exito!');
+        this.sala = new Sala();
         console.log(response);
       }).catch(error => {
         this.toastr.error('Los Datos Son Incorrectos!', 'Oops algo ha salido mal!');
