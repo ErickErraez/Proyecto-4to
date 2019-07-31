@@ -1,5 +1,8 @@
+import { Sala } from './sala';
+import { Preguntas } from './preguntas';
+
 export class SalaPregunta {
-    id?: number;
-    id_sala: number;
-    id_pregunta: number;
+  id?: number;
+  salas: Sala;
+  preguntas: Preguntas;
 }

@@ -7,9 +7,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  showNav: any;
+
+  constructor() {
+    sessionStorage.setItem('showNav', 'true');
+  }
 
   ngOnInit() {
+
+  }
+
+  showNavbar() {
+    if (JSON.parse(sessionStorage.getItem('showNav')) === true) {
+      return true;
+    }
+    if (JSON.parse(sessionStorage.getItem('showNav')) === false) {
+      return false;
+    }
   }
 
 }

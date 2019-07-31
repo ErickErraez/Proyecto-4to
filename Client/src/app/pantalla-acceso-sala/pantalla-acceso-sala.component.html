@@ -15,7 +15,7 @@
                     <qrcode [qrdata]="codigoQr" [size]="230" [level]="'L'"></qrcode>
                     <p></p>
                     <h3>Link de Acceso: </h3>
-                    <a [routerLink]="['/preguntar']" routerLinkActive="activo" [routerLinkActiveOptions]="{exact: true}" class="stretched-link">
+                    <a href="{{codigoQr}}" class="stretched-link">
                         <h3>{{codigoQr}}</h3>
                     </a>
                     <p></p>

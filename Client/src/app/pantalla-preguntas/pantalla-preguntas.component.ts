@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PantallaPreguntasComponent implements OnInit {
 
+  isSala: boolean = false;
+
   constructor() { }
 
   ngOnInit() {

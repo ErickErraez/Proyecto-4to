@@ -7,11 +7,11 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class SalaPreguntasService {
-  url = environment.url + 'salaPreguntas/';
+  url = environment.url + 'salasPreguntas/';
   constructor(private http: HttpClient) { }
 
   getSalaPreguntasById(id) {
-    return this.http.get(this.url + 'obtenerSalaPreguntas/' + id).toPromise().then(r => {
+    return this.http.get(this.url + 'obtenerSalaspreguntas/' + id).toPromise().then(r => {
       return r;
     }).catch(e => {
       return e.body;
@@ -19,7 +19,7 @@ export class SalaPreguntasService {
   }
 
   getAllSalasPreguntas() {
-    return this.http.get(this.url + 'obtenerSalaPreguntas').toPromise().then(r => {
+    return this.http.get(this.url + 'obtenerSalasPreguntas').toPromise().then(r => {
       return r;
     }).catch(e => {
       return e.body;
@@ -27,7 +27,7 @@ export class SalaPreguntasService {
   }
 
   postSalasPreguntas(salapreguntas: SalaPregunta) {
-    return this.http.post(this.url + 'guardarSalaPreguntas', salapreguntas).toPromise().then(r => {
+    return this.http.post(this.url + 'guardarSalasPreguntas', salapreguntas).toPromise().then(r => {
       return r;
     }).catch(e => {
       return e.body;

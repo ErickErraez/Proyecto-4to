@@ -119,7 +119,7 @@ public class SalasController {
         return new ResponseEntity<Salas>(salasSaved, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/obtenerSalas/{codigo}", method = RequestMethod.GET, headers = "Accept=application/json")
+    @RequestMapping(value = "/obtenerSalasCodigo/{codigo}", method = RequestMethod.GET, headers = "Accept=application/json")
     public ResponseEntity<Salas> obtenerSalas(@PathVariable("codigo") String codigo) {
         Salas salas = _salaServices.buscarCodigo(codigo);
         if (salas == null) {

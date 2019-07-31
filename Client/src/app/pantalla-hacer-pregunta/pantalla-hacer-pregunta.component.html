@@ -9,7 +9,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon1">Nombre Sala</span>
                     </div>
-                    <input class="form-control"  [(ngModel)]="sala.nombre" name="nombre" disabled>
+                    <input class="form-control" [(ngModel)]="sala.nombre" name="nombre" disabled>
                 </div>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
@@ -22,22 +22,18 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon1">Nombre</span>
                     </div>
-                    <input type="text" class="form-control" placeholder="Nombre" [(ngModel)]="preguntas.nombre" name="nombre"
-                        aria-describedby="basic-addon1">
+                    <input type="text" class="form-control" placeholder="Nombre" [(ngModel)]="preguntas.nombre" name="nombre" aria-describedby="basic-addon1">
                 </div>
                 <p></p>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon1">Correo</span>
                     </div>
-                    <input type="text" class="form-control" placeholder="Correo de Contacto" [(ngModel)]="preguntas.correo" name="correo"
-                        aria-describedby="basic-addon1">
+                    <input type="text" class="form-control" placeholder="Correo de Contacto" [(ngModel)]="preguntas.correo" name="correo" aria-describedby="basic-addon1">
                 </div>
                 <p></p>
                 <div>
-                    <button type="button" class="col-4 btn btn-outline-success">Enviar Pregunta</button>
-                    <button type="button" class="btn btn-white btn-sm" disabled></button>
-                    <button type="button" class="col-4 btn btn-outline-danger">Cancelar</button>
+                    <button type="button" class="col-4 btn btn-outline-success" (click)="guardarPregunta()">Enviar Pregunta</button>
                 </div>
 
             </div>

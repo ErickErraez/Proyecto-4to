@@ -20,6 +20,14 @@ export class SalaService {
     });
   }
 
+  getSalaByCode(codigo) {
+    return this.http.get(this.url + 'obtenerSalasCodigo/' + codigo).toPromise().then(r => {
+      return r;
+    }).catch(e => {
+      return e.body;
+    });
+  }
+
   getAllSala() {
     return this.http.get(this.url + 'obtenerSalas').toPromise().then(r => {
       return r;

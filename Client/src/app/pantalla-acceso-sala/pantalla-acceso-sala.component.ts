@@ -37,7 +37,7 @@ export class PantallaAccesoSalaComponent implements OnInit {
     this.salaServices.getSalaById(parseInt(id)).then(r => {
       this.sala = r;
       this.isSala = true;
-      this.codigoQr = 'http://192.168.1.8:4200/formular-pregunta/' + this.sala.codigo;
+      this.codigoQr = 'http://localhost:4200/formular-pregunta/' + this.sala.codigo;
     }).catch(e => {
       console.log(e);
     });
