@@ -3,7 +3,6 @@ import { Images } from '../Models/images';
 import { Expositor } from '../Models/expositor';
 import { ExpositorService } from '../services/expositor.service';
 import { ImagesService } from '../services/images.service';
-import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-registro-expositor',
@@ -16,7 +15,7 @@ export class RegistroExpositorComponent implements OnInit {
   expositor: Expositor;
   images: Images;
 
-  constructor(private expositorServices: ExpositorService, private imagenServices: ImagesService,private toastr: ToastrService) {
+  constructor(private expositorServices: ExpositorService, private imagenServices: ImagesService) {
     this.images = new Images();
     this.expositor = new Expositor();
   }
@@ -46,7 +45,7 @@ export class RegistroExpositorComponent implements OnInit {
         this.expositor = r;
         this.expositor.imagenes = res;
         this.expositorServices.putExpositorImg(this.expositor).then(respuesta => {
-          this.toastr.success('Expositor registrado con exito!', 'Registro realizado con Exito');
+          console.log('ok');
         });
       }).catch(e => {
         console.log(e);
