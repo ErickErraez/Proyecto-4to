@@ -54,6 +54,7 @@ export class CrearSalaComponent implements OnInit {
   }
   guardarSala() {
     this.sala.estado = 'Inactivo';
+    this.sala.personasIngresadas = 0;
     this.obtenerExpositor(this.expositor.id);
 
   }
