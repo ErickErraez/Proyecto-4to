@@ -39,8 +39,7 @@ public class DatabaseConfiguration {
 	public Properties hibernateProperties(){
 		Properties properties = new Properties();
 		properties.put("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
-                properties.put("hibernate.hbm2ddl.auto","create");
-		properties.put("show_sql", "true");
+                properties.put("show_sql", "true");
 		
 		return properties;
 	}

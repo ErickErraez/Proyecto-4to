@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import com.proyecto.server.model.Expositores;
+import com.proyecto.server.model.Imagenes;
 import com.proyecto.server.services.ExpositorServices;
 import com.proyecto.server.services.ImagenesServices;
 
@@ -96,6 +97,28 @@ public class ExpositoresController {
         _expositorServices.borrarExpositor(id);
 
         return new ResponseEntity("Se ha borrado con exito", HttpStatus.OK);
+    }
+
+    // ASIGNAR IMAGEN EXPOSITOR
+    @RequestMapping(value = "/expofoto", method = RequestMethod.PUT, headers = "Accept=application/json")
+    public ResponseEntity<Expositores> expositoresToImage(@RequestBody Expositores expo,
+            UriComponentsBuilder ucBuilder) {
+
+        if (expo.getId() == null || expo.getImagenes().getId() == null) {
+            return new ResponseEntity("Faltan Datos", HttpStatus.CONFLICT);
+        }
+        Expositores expoSaved = _expositorServices.buscarId(expo.getId());
+        if (expoSaved == null) {
+            return new ResponseEntity("No se Encontro", HttpStatus.CONFLICT);
+        }
+        Imagenes image = _imageServices.buscarId(expo.getImagenes().getId());
+        if (image == null) {
+            return new ResponseEntity("No se Encontro", HttpStatus.CONFLICT);
+        }
+        expoSaved.setImagenes(image);
+        _expositorServices.actualizarExpositores(expoSaved);
+
+        return new ResponseEntity<Expositores>(expoSaved, HttpStatus.OK);
     }
 
 }

@@ -1,53 +1,113 @@
 <div class="container">
-    <div class="row justify-content-md-center">
-        <div class="card  col-md-12">
+    <div class="row justify-content-md-center" *ngIf="!isSala">
+        <div id="fondo" class="card  col-md-11">
             <div class="card-header">
-                <h2 style="color:rgb(0,123,255);">Listado de Preguntas</h2>
+                <h2 style="color:#045bb2;">Seleccione la Sala</h2>
             </div>
             <div class="card-body">
-                <img src="../../assets/image/director.png" width="100" height="auto" class="rounded float-left" alt="...">
-                <p></p>
-                <h5>Nombre: Expositor 1</h5>
-                <p></p>
-                <h5>Tema: Prototipo</h5>
-                <p></p>
-                <div class="text-right">
-                    <button type="button" class="col-2 btn btn-outline-info">Exportar Preguntas</button>
-                </div>
+                <select class="custom-select" id="inputGroupSelect01" [(ngModel)]="sala.id" name="id">
+          <option *ngFor="let item of salas" value="{{ item.id }}">
+            {{ item.nombre }}</option>
+        </select>
+                <button type="button" class="col-4 btn btn-outline-success" (click)="obtenerSala(sala.id)">
+          Seleccionar Sala
+        </button>
             </div>
         </div>
     </div>
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">Nombre de Usuario</th>
-                <th scope="col">Correo</th>
-                <th scope="col">Pregunta</th>
-                <th scope="col">Seleccionar</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Mark</td>
-                <td>@mdo</td>
-                <td>Como se puede realizar?</td>
-                <td><input type="checkbox" aria-label="Checkbox for following text input">
-                </td>
-            </tr>
-            <tr>
-                <td>Jacob</td>
-                <td>@fat</td>
-                <td>Cuál es el Costo de Implementación?</td>
-                <td><input type="checkbox" aria-label="Checkbox for following text input">
-                </td>
-            </tr>
-            <tr>
-                <td>Larry</td>
-                <td>@twitter</td>
-                <td>Es Seguro?</td>
-                <td><input type="checkbox" aria-label="Checkbox for following text input">
-                </td>
-            </tr>
-        </tbody>
-    </table>
+    <ng-container *ngIf="isSala">
+        <div class="row justify-content-md-center">
+            <div id="fondo" class="card  col-md-11">
+                <div class="card-header">
+                    <h2 style="color:#045bb2;">
+                        Preguntas Realizadas a {{ sala.nombre }}
+                    </h2>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <img src="data:{{ sala.expositores.imagenes.tipo }};base64,{{
+                  sala.expositores.imagenes.adjunto
+                }}" width="150" height="auto" class="rounded-circle float-left" />
+                            <p></p>
+                            <h5>
+                                &nbsp;Expositor: {{ sala.expositores.nombre }}&nbsp;{{ sala.expositores.apellido }}
+                            </h5>
+                            <p></p>
+                            <h5>&nbsp;Tema Tratado: {{ sala.tema }}</h5>
+                            <p></p>
+                        </div>
+                        <div class="col">
+                            <div class="cronometro-body">
+                                <h4 style="color:#045bb2;">Tiempo</h4>
+                                <p></p>
+                                <div class="input-group-prepend">
+                                    <h3>{{ hora }} : {{ minutos }} : {{ segundos }}</h3>
+                                </div>
+                                <div class="buttons">
+                                    <button class="col-2 btn btn-outline-success btn-sm" (click)="start()">
+                    Iniciar
+                  </button>
+                                    <button type="button" class="btn btn-white btn-sm" disabled></button>
+                                    <!--   <button (click)="lapso()"> Lapso </button>-->
+                                    <button class="col-2 btn btn-outline-danger btn-sm" (click)="stop()">
+                    Parar
+                  </button>
+                                </div>
+                            </div>
+                            <br />
+                            <p></p>
+                            <div class="text-right">
+                                <button type="button" class="col-6 btn btn-outline-danger" (click)="isSala = false">
+                  Seleccionar Sala
+                </button>
+                                <button type="button" class="col-6 btn btn-outline-info">
+                  Exportar Preguntas
+                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div id="fondo" class="card-body">
+            <div class="row">
+                <div class="col">
+                    <button type="button" class="col-1 btn btn-info" (click)="obtenerSalaPreguntas()">
+            Refrescar
+          </button>
+                </div>
+            </div>
+        </div>
+        <table class="table" style="width:100%">
+            <thead>
+                <tr>
+                    <th width="180" scope="col">Nombre de Usuario</th>
+                    <th width="220" scope="col">Correo Electronico</th>
+                    <th scope="col">Preguntas Formuladas</th>
+                    <th width="90" scope="col">Elegir</th>
+                </tr>
+            </thead>
+            <tbody>
+                <ng-container *ngFor="let item of salaPreguntas; let indice = index">
+                    <tr *ngIf="item.salas.id == sala.id">
+                        <td width="180">{{ item.preguntas.nombre }}</td>
+                        <td width="220">{{ item.preguntas.correo }}</td>
+                        <td class="pregunta">{{ item.preguntas.pregunta }}</td>
+                        <td class="centrado" width="90">
+                            <div class="checkbox">
+                                <input type="checkbox" name="checkbox" id="checkbox{{ indice }}" (change)="
+                    $event.target.checked
+                      ? agregar(item.preguntas)
+                      : quitar(item.preguntas)
+                  " />
+                                <label for="checkbox{{ indice }}">Si</label>
+                            </div>
+                        </td>
+                    </tr>
+                </ng-container>
+            </tbody>
+        </table>
+    </ng-container>
 </div>

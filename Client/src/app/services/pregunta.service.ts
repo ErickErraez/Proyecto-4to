@@ -1,30 +1,37 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { SalaPregunta } from './../Models/salaPregunta';
-import { Observable } from 'rxjs';
+import { Preguntas } from './../Models/preguntas';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
    providedIn: 'root'
 })
 export class PreguntasService {
-
-   url = 'http//192.168.43.126:8080/preguntas/obtenerPreguntas';
-   sala: Observable<any>;
-   salas: Observable<any>;
+   url = environment.url + 'preguntas/';
 
    constructor(private http: HttpClient) { }
 
-   getSala() {
-      return this.http.get('http//192.168.43.126:8080/preguntas/obtenerPreguntas');
-   }
-
-   getSalaId(id?: number) {
-      this.http.get('http//192.168.43.126:8080/preguntas/obtenerPreguntas').subscribe(r => {
-         console.log(r);
+   getPreguntasById(id) {
+      return this.http.get(this.url + 'obtenerPreguntas/' + id).toPromise().then(r => {
+        return r;
+      }).catch(e => {
+        return e.body;
       });
-   }
+    }
 
-   postSala(salaPregunta: SalaPregunta) {
+    getAllPreguntas() {
+      return this.http.get(this.url + 'obtenerPreguntas').toPromise().then(r => {
+        return r;
+      }).catch(e => {
+        return e.body;
+      });
+    }
 
-   }
+    postPreguntas(preguntas: Preguntas) {
+      return this.http.post(this.url + 'guardarPreguntas', preguntas).toPromise().then(r => {
+        return r;
+      }).catch(e => {
+        return e.body;
+      });
+    }
 }

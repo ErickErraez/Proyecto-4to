@@ -22,7 +22,7 @@ public class ImagenesController {
     private ImagenesServices _imagenServices;
 
     // OBTENER IMAGENES
-    @RequestMapping(value = "/obtenerImagen/{id}", method = RequestMethod.GET, headers = "Accept=application/json")
+    @RequestMapping(value = "/obtenerImagenes/{id}", method = RequestMethod.GET, headers = "Accept=application/json")
     public ResponseEntity<Imagenes> getImagenById(@PathVariable("id") Long id) {
         Imagenes imagenes = _imagenServices.buscarId(id);
         if (imagenes == null) {
@@ -33,10 +33,10 @@ public class ImagenesController {
     }
 
     // GUARDAR IMAGENES
-    @RequestMapping(value = "/guardarImagen", method = RequestMethod.POST, headers = "Accept=application/json")
+    @RequestMapping(value = "/guardarImagenes", method = RequestMethod.POST, headers = "Accept=application/json")
     public ResponseEntity<?> guardarImagen(@RequestBody Imagenes imagenes, UriComponentsBuilder uriComponentsBuilder) {
 
-        if (imagenes.getTipoArchivo().equals(null) || imagenes.getTipoArchivo().isEmpty() || imagenes.getAdjuntoArchivo().equals(null) || imagenes.getAdjuntoArchivo().isEmpty()) {
+        if (imagenes.getTipo().equals(null) || imagenes.getTipo().isEmpty() || imagenes.getAdjunto().equals(null) || imagenes.getAdjunto().isEmpty()) {
             return new ResponseEntity("Faltan Datos Necesarios", HttpStatus.CONFLICT);
         }
         _imagenServices.guardarImagenes(imagenes);
@@ -46,7 +46,7 @@ public class ImagenesController {
     }
 
     // ACTUALIZAR IMAGENES
-    @RequestMapping(value = "/actualizarImagen/{id}", method = RequestMethod.PUT, headers = "Accept=application/json")
+    @RequestMapping(value = "/actualizarImagenes/{id}", method = RequestMethod.PUT, headers = "Accept=application/json")
     public ResponseEntity<?> actualizarImagen(@PathVariable("id") Long id, @RequestBody Imagenes imagen) {
 
         Imagenes imagenUpdate = _imagenServices.buscarId(id);
@@ -54,9 +54,9 @@ public class ImagenesController {
             return new ResponseEntity("No se encuentra imagen", HttpStatus.NOT_FOUND);
         }
 
-        imagenUpdate.setNombreArchivo(imagen.getNombreArchivo());
-        imagenUpdate.setTipoArchivo(imagen.getTipoArchivo());
-        imagenUpdate.setAdjuntoArchivo(imagen.getAdjuntoArchivo());
+        imagenUpdate.setNombre(imagen.getNombre());
+        imagenUpdate.setTipo(imagen.getTipo());
+        imagenUpdate.setAdjunto(imagen.getAdjunto());
 
         _imagenServices.actualizarImagenes(imagenUpdate);
 

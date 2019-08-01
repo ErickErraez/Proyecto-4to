@@ -5,7 +5,6 @@ import java.util.List;
 import javax.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 
-
 @Repository
 @Transactional
 public class SalasDaoImpl extends AbstractSession implements SalasDao {
@@ -38,6 +37,13 @@ public class SalasDaoImpl extends AbstractSession implements SalasDao {
     @Override
     public List<Salas> traerTodos() {
         return getSession().createQuery("from Salas").list();
+    }
+
+    @Override
+    public Salas buscarCodigo(String codigo) {
+        return (Salas) getSession().createQuery(
+                "from Salas where codigo = :codigo")
+                .setParameter("codigo", codigo).uniqueResult();
     }
 
 }

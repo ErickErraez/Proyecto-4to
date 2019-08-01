@@ -10,7 +10,7 @@ import java.util.List;
 
 @Service("salasServices")
 @Transactional
-public class SalaServicesImpl implements SalasServices {
+public class SalasServicesImpl implements SalasServices {
 
     @Autowired
     private SalasDao _salasDao;
@@ -38,6 +38,11 @@ public class SalaServicesImpl implements SalasServices {
     @Override
     public List<Salas> traerTodos() {
         return _salasDao.traerTodos();
+    }
+
+    @Override
+    public Salas buscarCodigo(String codigo) {
+        return _salasDao.buscarCodigo(codigo);
     }
 
 }

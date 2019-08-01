@@ -1,0 +1,17 @@
+nav{
+    background-color: #0F1939;
+  }
+  .navbar-brand {
+    color: white;
+  }
+  .nav-item .nav-link {
+    color: white;
+  }
+  .nav-item :hover {
+    background-color: #045bb2;
+    color: white;
+  }
+  .nav-item :active {
+      background-color: #045bb2;
+      color: white;
+    }
