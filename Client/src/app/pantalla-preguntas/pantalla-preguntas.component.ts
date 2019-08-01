@@ -4,8 +4,7 @@ import { SalaService } from '../services/salas.service';
 import { SalaPreguntasService } from '../services/salaPreguntas.service';
 import { ToastrService } from 'ngx-toastr';
 import { Preguntas } from '../Models/preguntas';
-
-
+import jsPDF from 'jspdf';
 
 @Component({
   selector: 'app-pantalla-preguntas',
@@ -18,7 +17,6 @@ export class PantallaPreguntasComponent implements OnInit {
   salas: any = [];
   salaPreguntas: any = [];
   preguntas: any = [];
-  preguntasSeleccionadas: any = [];
   sala: Sala;
   pregunta: Preguntas;
   index: any;
@@ -46,7 +44,6 @@ export class PantallaPreguntasComponent implements OnInit {
   obtenerSalas() {
     this.salaServices.getAllSala().then(r => {
       this.salas = r;
-      console.log(this.salas);
     }).catch(e => {
       console.log(e);
     });
@@ -58,7 +55,7 @@ export class PantallaPreguntasComponent implements OnInit {
         this.sala = r;
         this.isSala = true;
       }).catch(e => {
-        console.log(e);
+
       });
     } else {
       this.toastr.error('Debe seleccionar almenos una Sala!', 'Oops se encontro un error!');
@@ -118,31 +115,23 @@ export class PantallaPreguntasComponent implements OnInit {
       this.salaPreguntas = r;
     }).catch(e => {
       console.log("no OK")
-    })
+    });
   }
 
-  obtenerSelecionado() {
-    if (this.seleccionado) {
-      this.seleccionado = false;
+  agregar(data) {
+    // Agregamos el elemento
+    this.preguntas.push(data);
+    console.log(this.preguntas);
+  }
 
-    } else {
-      this.seleccionado = true;
+  quitar(data) {
+    // Filtramos el elemento para que quede fuera
+    this.preguntas = this.preguntas.filter(s => s !== data);
+    console.log(this.preguntas);
+  }
 
-    }
+  generarPdf() {
 
   }
-  onSelect(actual): void {
-    this.cont = 0;
-    for (var i = 0; i < this.salaPreguntas.length; i++) {
-      if (this.salaPreguntas[i].salas.id == this.sala.id) {
-        this.preguntas.push(this.salaPreguntas[i].preguntas);
-        if (document.getElementById(this.cont+= 1).checked) {
-          this.preguntasSeleccionadas.push(actual);
-        } else {
-          this.index = this.preguntasSeleccionadas.indexOf(actual.id);
-          this.preguntasSeleccionadas.splice(this.index, 1);
-        }
-      }
-    }
-  }
+
 }

@@ -70,13 +70,13 @@ public class SalasController {
             return new ResponseEntity("No se encuentra expositor", HttpStatus.NOT_FOUND);
         }
 
-        salasUpdate.setNombre(salasUpdate.getNombre());
-        salasUpdate.setCodigo(salasUpdate.getCodigo());
-        salasUpdate.setTema(salasUpdate.getTema());
-        salasUpdate.setCapacidad(salasUpdate.getCapacidad());
-        salasUpdate.setPreguntasPermitidas(salasUpdate.getPreguntasPermitidas());
-        salasUpdate.setEstado(salasUpdate.getEstado());
-        salasUpdate.setExpositores(salasUpdate.getExpositores());
+        salasUpdate.setNombre(salas.getNombre());
+        salasUpdate.setCodigo(salas.getCodigo());
+        salasUpdate.setTema(salas.getTema());
+        salasUpdate.setCapacidad(salas.getCapacidad());
+        salasUpdate.setPreguntasPermitidas(salas.getPreguntasPermitidas());
+        salasUpdate.setEstado(salas.getEstado());
+        salasUpdate.setExpositores(salas.getExpositores());
 
         _salaServices.actualizarSalas(salasUpdate);
 
