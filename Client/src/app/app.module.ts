@@ -15,6 +15,7 @@ import { PantallaAccesoSalaComponent } from './pantalla-acceso-sala/pantalla-acc
 import { PantallaHacerPreguntaComponent } from './pantalla-hacer-pregunta/pantalla-hacer-pregunta.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { NavbarComponent } from './navbar/navbar.component';
     PantallaHacerPreguntaComponent,
     InicioComponent,
     NavbarComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,

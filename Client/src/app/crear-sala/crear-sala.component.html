@@ -48,12 +48,13 @@
                     <input type="number" min="1" [(ngModel)]="sala.preguntasPermitidas" name="preguntasPermitidas" class="form-control" placeholder="Preguntas por Usuario" aria-describedby="basic-addon1">
                 </div>
                 <div>
-                    <button type="button" class="col-4 btn btn-outline-success" (click)="guardarSala()">Crear Sala</button>
+                    <button type="button" class="col-4 btn btn-outline-success" (click)="guardarSala()"><i class="far fa-check-circle"></i> Crear Sala</button>
                     <button type="button" class="btn btn-white btn-sm" disabled></button>
-                    <button type="button" class="col-4 btn btn-outline-danger">Cancelar</button>
+                    <button type="button" class="col-4 btn btn-outline-danger"><i class="far fa-times-circle"></i> Cancelar</button>
                 </div>
 
             </div>
         </div>
     </div>
 </div>
+<app-footer></app-footer>

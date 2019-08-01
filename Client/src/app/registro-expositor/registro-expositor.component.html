@@ -7,7 +7,7 @@
             <div class="card-body text-center">
                 <div class="col-md-4">
                     <label for="formGroupExampleInput">
-                        <h5> Subir Archivo:</h5>
+                        <h5> Subir Imagen:</h5>
                     </label> <br />
                     <img (click)="fileInput.click()" class="card-img fotoPerfilPortada img-thumbnail rounded-circle" src="{{srcFoto}}" width="150px" height="150px" /> <br> <br>
                     <input hidden=true type="file" style="display: none;" #fileInput (change)="CodificarArchivo($event)" accept="image/*">
@@ -55,12 +55,13 @@
                 </div>
                 <p></p>
                 <div>
-                    <button type="button" class="col-4 btn btn-outline-success" (click)="guardarExpositor()">Registrar Expositor</button>
+                    <button type="button" class="col-4 btn btn-outline-success" (click)="guardarExpositor()"><i class="fas fa-user-check"></i> Registrar Expositor</button>
                     <button type="button" class="btn btn-white btn-sm" disabled></button>
-                    <button type="button" class="col-4 btn btn-outline-danger">Cancelar</button>
+                    <button type="button" class="col-4 btn btn-outline-danger"><i class="far fa-times-circle"></i> Cancelar</button>
                 </div>
 
             </div>
         </div>
     </div>
 </div>
+<app-footer></app-footer>

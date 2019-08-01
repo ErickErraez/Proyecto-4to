@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg" *ngIf="showNavbar()">
-    <a class="navbar-brand" [routerLink]="['inicio']">Inicio</a>
+    <a class="navbar-brand" [routerLink]="['inicio']"><i class="fas fa-home"></i> Inicio</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -8,16 +8,16 @@
         <ul class="navbar-nav mr-auto">
 
             <li class="nav-item" routerLinkActive='activate'>
-                <a class="nav-link" [routerLink]="['registro-expositor']">Registrar Expositor</a>
+                <a class="nav-link" [routerLink]="['registro-expositor']"><i class="fas fa-user-tie"></i> Registrar Expositor</a>
             </li>
             <li class="nav-item" routerLinkActive='activate'>
-                <a class="nav-link" [routerLink]="['crear-sala']">Crear Sala</a>
+                <a class="nav-link" [routerLink]="['crear-sala']"><i class="fas fa-chalkboard-teacher"></i> Crear Sala</a>
             </li>
             <li class="nav-item" routerLinkActive='activate'>
-                <a class="nav-link" [routerLink]="['acceso']">Ingresar a Sala</a>
+                <a class="nav-link" [routerLink]="['acceso']"><i class="fas fa-door-open"></i> Ingresar a Sala</a>
             </li>
             <li class="nav-item" routerLinkActive='activate'>
-                <a class="nav-link" [routerLink]="['listado-preguntas']">Ver Preguntas</a>
+                <a class="nav-link" [routerLink]="['listado-preguntas']"><i class="fas fa-clipboard-list"></i> Ver Preguntas</a>
             </li>
         </ul>
     </div>
