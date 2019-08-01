@@ -5,7 +5,7 @@ export class Sala {
   codigo: string;
   nombre: string;
   tema: string;
-  capacidad: string;
+  capacidad: number;
   preguntasPermitidas: number;
   personasIngresadas: number;
   expositores: Expositor;
