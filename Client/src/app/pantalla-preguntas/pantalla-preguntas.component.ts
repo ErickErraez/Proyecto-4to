@@ -13,13 +13,26 @@ import jsPDF from 'jspdf';
 })
 export class PantallaPreguntasComponent implements OnInit {
 
-  isSala: boolean = false;
+  isSala = false;
   salas: any = [];
   salaPreguntas: any = [];
   preguntas: any = [];
   sala: Sala;
   pregunta: Preguntas;
   index: any;
+  textoTotal: any;
+  lines: any;
+  rows: any;
+  format: any;
+  fontSize: any;
+  dimtext: any;
+  ht: any;
+  wt: any;
+  x: any = 15;
+  y: any = 25;
+  count: any;
+  imgData: any;
+  dimensionArray: any;
 
   public hora: any = 0;
   public minutos: any = 0;
@@ -45,7 +58,7 @@ export class PantallaPreguntasComponent implements OnInit {
     this.salaServices.getAllSala().then(r => {
       this.salas = r;
     }).catch(e => {
-      console.log(e);
+      this.toastr.error('No se ha podido obtener Salas!', 'Oops algo ha salido mal');
     });
   }
 
@@ -55,7 +68,7 @@ export class PantallaPreguntasComponent implements OnInit {
         this.sala = r;
         this.isSala = true;
       }).catch(e => {
-
+        this.toastr.error('No se ha podido obtener la Sala!', 'Oops algo ha salido mal');
       });
     } else {
       this.toastr.error('Debe seleccionar almenos una Sala!', 'Oops se encontro un error!');
@@ -65,7 +78,7 @@ export class PantallaPreguntasComponent implements OnInit {
   actualizarEstadoSala(estado) {
     this.sala.estado = estado;
     this.salaServices.putSala(this.sala).then(r => {
-      console.log(r);
+
       this.sala = r;
     }).catch(e => {
 
@@ -74,16 +87,16 @@ export class PantallaPreguntasComponent implements OnInit {
 
   start() {
     this.actualizarEstadoSala('Activo');
-    if (this.contador == undefined) {
+    if (this.contador === undefined) {
       this.contador = setInterval(() => {
         this.segundos += 1;
-        if (this.segundos == 60) {
+        if (this.segundos === 60) {
           this.segundos = 0;
           this.minutos += 1;
-          if (this.minutos == 60) {
+          if (this.minutos === 60) {
             this.minutos = 0;
             this.hora += 1;
-            if (this.hora == 24) {
+            if (this.hora === 24) {
               this.hora = 0;
             }
           }
@@ -93,7 +106,7 @@ export class PantallaPreguntasComponent implements OnInit {
     }
   }
   lapso() {
-    let obj: any = {};
+    const obj: any = {};
     obj.hora = this.hora;
     obj.minutos = this.minutos;
     obj.segundos = this.segundos;
@@ -114,24 +127,42 @@ export class PantallaPreguntasComponent implements OnInit {
     this.salaPreguntasServices.getAllSalasPreguntas().then(r => {
       this.salaPreguntas = r;
     }).catch(e => {
-      console.log("no OK")
+      this.toastr.error('No se ha podido encontrar salas!', 'Oops algo ha salido mal');
     });
   }
 
   agregar(data) {
     // Agregamos el elemento
     this.preguntas.push(data);
-    console.log(this.preguntas);
   }
 
   quitar(data) {
     // Filtramos el elemento para que quede fuera
     this.preguntas = this.preguntas.filter(s => s !== data);
-    console.log(this.preguntas);
   }
 
   generarPdf() {
+    this.x = 10;
+    this.y = 10;
+    this.fontSize = 12;
+    const doc = new jsPDF('p', 'mm', this.format, true);
+    this.imgData = 'data:' + this.sala.expositores.imagenes.tipo + ';base64,' + this.sala.expositores.imagenes.adjunto;
+    console.log(this.imgData);
+    doc.addImage(this.imgData, 'JPEG', 15, 40, 40, 60);
+    doc.setFontSize(this.fontSize);
+    doc.setFontStyle('arial');
+    console.log(this.preguntas.length);
+    for (let i = 0; i < this.preguntas.length; i++) {
+      this.textoTotal = i + 1 + '. ' + this.preguntas[i].pregunta;
+      doc.text(this.x, this.y, this.textoTotal);
+      this.y += 5;
+    }
+    doc.save('preguntas.pdf');
+  }
+
+  encabezado() {
 
   }
 
 }
+

@@ -20,7 +20,6 @@ export class PantallaHacerPreguntaComponent implements OnInit {
   sala: Sala;
   salaPreguntas: SalaPregunta;
   cont: number = 0;
-  perIngres: number = 0;
 
   constructor(private root: ActivatedRoute, private salaPreguntaServices: SalaPreguntasService,
     private preguntasService: PreguntasService, private salaServices: SalaService, private toastr: ToastrService) {
@@ -29,16 +28,15 @@ export class PantallaHacerPreguntaComponent implements OnInit {
     this.sala = new Sala();
     this.codigo = this.root.snapshot.params['codigo'];
     this.obtenerSala();
-    this.obtenerPersonasPermitidas();
   }
   ngOnInit() {
     sessionStorage.setItem('showNav', 'false');
+    this.obtenerPersonasPermitidas();
   }
 
   obtenerSala() {
     this.salaServices.getSalaByCode(this.codigo).then(response => {
       this.sala = response;
-      this.perIngres = this.sala.personasIngresadas;
     }).catch(e => {
 
     });
@@ -46,7 +44,7 @@ export class PantallaHacerPreguntaComponent implements OnInit {
 
   guardarPregunta() {
     this.obtenerSala();
-    if (this.sala.personasIngresadas < this.perIngres) {
+    if (this.sala.personasIngresadas <= this.sala.capacidad) {
       if (this.cont < this.sala.preguntasPermitidas) {
         if (this.sala.estado === 'Activo') {
           this.preguntasService.postPreguntas(this.preguntas).then(r => {
@@ -58,10 +56,10 @@ export class PantallaHacerPreguntaComponent implements OnInit {
               this.toastr.success('Felicitaciones!', 'La pregunta se ha registrado con exito');
               this.preguntas = new Preguntas();
             }).catch(e => {
-
+              this.toastr.error('Algo ha salido mal!', 'Oops lo sentimos!');
             });
           }).catch(e => {
-
+            this.toastr.error('Algo ha salido mal!', 'Oops lo sentimos!');
           });
         }
         if (this.sala.estado === 'Inactivo') {
@@ -75,11 +73,20 @@ export class PantallaHacerPreguntaComponent implements OnInit {
     }
   }
   obtenerPersonasPermitidas() {
-    this.sala.personasIngresadas = this.perIngres + 1;
-    this.salaServices.putSala(this.sala).then(r => {
-      console.log(r);
+    this.salaServices.getSalaByCode(this.codigo).then(response => {
+      this.sala = response;
+      if (this.sala.personasIngresadas <= this.sala.capacidad) {
+        this.sala.personasIngresadas += 1;
+        this.salaServices.putSala(this.sala).then(r => {
+        }).catch(e => {
+
+        });
+      }
     }).catch(e => {
 
     });
+
+
   }
+
 }

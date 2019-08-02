@@ -31,9 +31,8 @@ export class CrearSalaComponent implements OnInit {
   obtenerExpositores() {
     this.expositoresServices.getAllExpositores().then(respuesta => {
       this.expositores = respuesta;
-      console.log(this.expositores);
     }).catch(error => {
-      console.log('error');
+      this.toastr.error('Aun no hay expositores disponibles!', 'Oops algo ha salido mal!');
     });
   }
 

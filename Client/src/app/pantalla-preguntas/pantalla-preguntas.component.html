@@ -63,7 +63,7 @@
                                 <button type="button" class="col-6 btn btn-outline-danger" (click)="isSala = false">
                                     Seleccionar Sala
                                 </button>
-                                <button type="button" class="col-6 btn btn-outline-info">
+                                <button type="button" class="col-6 btn btn-outline-info" (click)="generarPdf()">
                                     Exportar Preguntas
                                 </button>
                             </div>
@@ -94,8 +94,8 @@
             <tbody>
                 <ng-container *ngFor="let item of salaPreguntas; let indice = index">
                     <tr *ngIf="item.salas.id == sala.id">
-                        <td width="180">{{ item.preguntas.nombre }}</td>
-                        <td width="220">{{ item.preguntas.correo }}</td>
+                        <td class="pregunta" width="180">{{ item.preguntas.nombre }}</td>
+                        <td class="pregunta" width="220">{{ item.preguntas.correo }}</td>
                         <td class="pregunta">{{ item.preguntas.pregunta }}</td>
                         <td class="centrado" width="90">
                             <div class="checkbox">
@@ -113,4 +113,3 @@
         </table>
     </ng-container>
 </div>
-<app-footer id="footer"></app-footer>
