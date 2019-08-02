@@ -45,7 +45,7 @@ export class PantallaHacerPreguntaComponent implements OnInit {
   guardarPregunta() {
     this.obtenerSala();
     if (this.sala.personasIngresadas <= this.sala.capacidad) {
-      if (this.cont < this.sala.preguntasPermitidas) {
+      if (this.cont <= this.sala.preguntasPermitidas) {
         if (this.sala.estado === 'Activo') {
           this.preguntasService.postPreguntas(this.preguntas).then(r => {
             this.preguntas = r;

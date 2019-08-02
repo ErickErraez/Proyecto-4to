@@ -126,6 +126,7 @@ export class PantallaPreguntasComponent implements OnInit {
   obtenerSalaPreguntas() {
     this.salaPreguntasServices.getAllSalasPreguntas().then(r => {
       this.salaPreguntas = r;
+      console.log(r);
     }).catch(e => {
       this.toastr.error('No se ha podido encontrar salas!', 'Oops algo ha salido mal');
     });
@@ -142,20 +143,29 @@ export class PantallaPreguntasComponent implements OnInit {
   }
 
   generarPdf() {
-    this.x = 10;
-    this.y = 10;
-    this.fontSize = 12;
+    this.x = 20;
+    this.y = 130;
+    this.fontSize = 14;
+    const rojo = '#ef0606';
+    const azul = '#0F1939';
     const doc = new jsPDF('p', 'mm', this.format, true);
+    doc.rect(10, 10, 190, 275);
     this.imgData = 'data:' + this.sala.expositores.imagenes.tipo + ';base64,' + this.sala.expositores.imagenes.adjunto;
-    console.log(this.imgData);
-    doc.addImage(this.imgData, 'JPEG', 15, 40, 40, 60);
+    doc.addImage(this.imgData, 'JPEG', 20, 40, 40, 60);
+    doc.setFontSize(20);
+    doc.setTextColor(rojo);
+    doc.text(this.sala.nombre, 60, 25);
+    doc.setTextColor(azul);
+    doc.setFontSize(16);
+    doc.text('Expositor: ' + this.sala.expositores.nombre + ' ' + this.sala.expositores.apellido, 65, 60);
+    doc.text('Tema tratado: ' + this.sala.tema, 65, 70);
+    doc.text('Listado de Preguntas:', 30, 120);
     doc.setFontSize(this.fontSize);
     doc.setFontStyle('arial');
-    console.log(this.preguntas.length);
     for (let i = 0; i < this.preguntas.length; i++) {
-      this.textoTotal = i + 1 + '. ' + this.preguntas[i].pregunta;
+      this.textoTotal = i + 1 + '. ' + this.preguntas[i].nombre + ' // ' + this.preguntas[i].pregunta;
       doc.text(this.x, this.y, this.textoTotal);
-      this.y += 5;
+      this.y += 10;
     }
     doc.save('preguntas.pdf');
   }

@@ -38,6 +38,7 @@
                             <p></p>
                             <h5>&nbsp;Tema Tratado: {{ sala.tema }}</h5>
                             <p></p>
+                            <h5>&nbsp;Estado de Sala: {{ sala.estado }}</h5>
                         </div>
                         <div class="col">
                             <div class="cronometro-body">
@@ -92,7 +93,7 @@
                 </tr>
             </thead>
             <tbody>
-                <ng-container *ngFor="let item of salaPreguntas; let indice = index">
+                <ng-container *ngFor="let item of salaPreguntas; let indice = index;">
                     <tr *ngIf="item.salas.id == sala.id">
                         <td class="pregunta" width="180">{{ item.preguntas.nombre }}</td>
                         <td class="pregunta" width="220">{{ item.preguntas.correo }}</td>
