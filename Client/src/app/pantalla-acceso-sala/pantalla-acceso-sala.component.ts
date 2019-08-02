@@ -27,7 +27,6 @@ export class PantallaAccesoSalaComponent implements OnInit {
   obtenerSalas() {
     this.salaServices.getAllSala().then(r => {
       this.salas = r;
-      console.log(this.salas);
     }).catch(e => {
       console.log(e);
     });

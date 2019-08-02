@@ -79,7 +79,6 @@ export class PantallaHacerPreguntaComponent implements OnInit {
         this.sala.personasIngresadas += 1;
         this.salaServices.putSala(this.sala).then(r => {
         }).catch(e => {
-
         });
       }
     }).catch(e => {
