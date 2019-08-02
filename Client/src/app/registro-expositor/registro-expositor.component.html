@@ -9,7 +9,7 @@
                     <label for="formGroupExampleInput">
                         <h5> Subir Imagen:</h5>
                     </label> <br />
-                    <img (click)="fileInput.click()" class="card-img fotoPerfilPortada img-thumbnail rounded-circle" src="{{srcFoto}}" width="150px" height="150px" /> <br> <br>
+                    <img (click)="fileInput.click()" width="140" height="160" class="card-img fotoPerfilPortada rounded-circle" src="{{srcFoto}}" /> <br> <br>
                     <input hidden=true type="file" style="display: none;" #fileInput (change)="CodificarArchivo($event)" accept="image/*">
                 </div>
                 <div class="input-group mb-3">
