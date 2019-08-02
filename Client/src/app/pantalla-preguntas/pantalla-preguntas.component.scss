@@ -44,7 +44,6 @@
     border-radius: 50%;
     background: none;
     border: 3px solid rgb(1, 67, 248);
-    ;
 }
 
 .checkbox label:before {
@@ -61,7 +60,6 @@
 
 .checkbox input[type="checkbox"]:checked+label {
     background: rgb(1, 67, 248);
-    ;
     color: #fff;
     padding: 5px 15px;
 }

@@ -31,9 +31,8 @@ export class CrearSalaComponent implements OnInit {
   obtenerExpositores() {
     this.expositoresServices.getAllExpositores().then(respuesta => {
       this.expositores = respuesta;
-      console.log(this.expositores);
     }).catch(error => {
-      console.log('error');
+      this.toastr.error('Aun no hay expositores disponibles!', 'Oops algo ha salido mal!');
     });
   }
 
@@ -54,6 +53,7 @@ export class CrearSalaComponent implements OnInit {
   }
   guardarSala() {
     this.sala.estado = 'Inactivo';
+    this.sala.personasIngresadas = 0;
     this.obtenerExpositor(this.expositor.id);
 
   }

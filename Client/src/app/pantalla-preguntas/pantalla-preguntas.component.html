@@ -6,12 +6,14 @@
             </div>
             <div class="card-body">
                 <select class="custom-select" id="inputGroupSelect01" [(ngModel)]="sala.id" name="id">
-          <option *ngFor="let item of salas" value="{{ item.id }}">
-            {{ item.nombre }}</option>
-        </select>
-                <button type="button" class="col-4 btn btn-outline-success" (click)="obtenerSala(sala.id)">
-          Seleccionar Sala
-        </button>
+                    <option *ngFor="let item of salas" value="{{ item.id }}">
+                        {{ item.nombre }}</option>
+                </select>
+                <p></p>
+                <button type="button" class="text-center col-4 btn btn-outline-success" (click)="obtenerSala(sala.id)"><i
+                        class="far fa-check-circle"></i>
+                    Seleccionar Sala
+                </button>
             </div>
         </div>
     </div>
@@ -46,24 +48,24 @@
                                 </div>
                                 <div class="buttons">
                                     <button class="col-2 btn btn-outline-success btn-sm" (click)="start()">
-                    Iniciar
-                  </button>
+                                        Iniciar
+                                    </button>
                                     <button type="button" class="btn btn-white btn-sm" disabled></button>
                                     <!--   <button (click)="lapso()"> Lapso </button>-->
                                     <button class="col-2 btn btn-outline-danger btn-sm" (click)="stop()">
-                    Parar
-                  </button>
+                                        Parar
+                                    </button>
                                 </div>
                             </div>
                             <br />
                             <p></p>
                             <div class="text-right">
                                 <button type="button" class="col-6 btn btn-outline-danger" (click)="isSala = false">
-                  Seleccionar Sala
-                </button>
-                                <button type="button" class="col-6 btn btn-outline-info">
-                  Exportar Preguntas
-                </button>
+                                    Seleccionar Sala
+                                </button>
+                                <button type="button" class="col-6 btn btn-outline-info" (click)="generarPdf()">
+                                    Exportar Preguntas
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -75,8 +77,8 @@
             <div class="row">
                 <div class="col">
                     <button type="button" class="col-1 btn btn-info" (click)="obtenerSalaPreguntas()">
-            Refrescar
-          </button>
+                        Refrescar
+                    </button>
                 </div>
             </div>
         </div>
@@ -92,8 +94,8 @@
             <tbody>
                 <ng-container *ngFor="let item of salaPreguntas; let indice = index">
                     <tr *ngIf="item.salas.id == sala.id">
-                        <td width="180">{{ item.preguntas.nombre }}</td>
-                        <td width="220">{{ item.preguntas.correo }}</td>
+                        <td class="pregunta" width="180">{{ item.preguntas.nombre }}</td>
+                        <td class="pregunta" width="220">{{ item.preguntas.correo }}</td>
                         <td class="pregunta">{{ item.preguntas.pregunta }}</td>
                         <td class="centrado" width="90">
                             <div class="checkbox">

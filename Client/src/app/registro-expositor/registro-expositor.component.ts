@@ -3,6 +3,7 @@ import { Images } from '../Models/images';
 import { Expositor } from '../Models/expositor';
 import { ExpositorService } from '../services/expositor.service';
 import { ImagesService } from '../services/images.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-registro-expositor',
@@ -15,13 +16,12 @@ export class RegistroExpositorComponent implements OnInit {
   expositor: Expositor;
   images: Images;
 
-  constructor(private expositorServices: ExpositorService, private imagenServices: ImagesService) {
+  constructor(private expositorServices: ExpositorService, private imagenServices: ImagesService, private toastr: ToastrService) {
     this.images = new Images();
     this.expositor = new Expositor();
   }
 
   ngOnInit() {
-    this.obtenerExpo();
   }
 
   CodificarArchivo(event) {
@@ -40,25 +40,26 @@ export class RegistroExpositorComponent implements OnInit {
   }
 
   guardarExpositor() {
-    this.imagenServices.postImages(this.images).then(res => {
-      this.expositorServices.postExpositor(this.expositor).then(r => {
-        this.expositor = r;
-        this.expositor.imagenes = res;
-        this.expositorServices.putExpositorImg(this.expositor).then(respuesta => {
-          console.log('ok');
+    if (this.images.adjunto !== undefined) {
+      this.imagenServices.postImages(this.images).then(res => {
+        this.expositorServices.postExpositor(this.expositor).then(r => {
+          this.expositor = r;
+          this.expositor.imagenes = res;
+          this.expositorServices.putExpositorImg(this.expositor).then(respuesta => {
+            this.toastr.success('Expositor registrado con exito!', 'Registro realizado con Exito');
+          }).catch(er => {
+            this.toastr.error('Ha ocurrido un error al guardar la foto!', 'Oops algo ha salido mal');
+          });
+        }).catch(e => {
+          this.toastr.error('Ha ocurrido un error al guardar el Expositor!', 'Oops algo ha salido mal');
         });
-      }).catch(e => {
-        console.log(e);
+      }).catch(error => {
+        this.toastr.error('Ha ocurrido un error al guardar la foto!', 'Oops algo ha salido mal');
       });
-    }).catch(error => {
-    });
-  }
-  obtenerExpo() {
-    this.expositorServices.getAllExpositores().then(r => {
-      console.log(r);
-    }).catch(e => {
+    } else {
+      this.toastr.error('Debes ingresar una foto!', 'Oops algo ha salido mal');
+    }
 
-    });
   }
 
 }

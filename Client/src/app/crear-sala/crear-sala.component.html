@@ -14,7 +14,7 @@
                 <p></p>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                        <span class="input-group-text" id="basic-addon1">Nombre</span>
+                        <span class="input-group-text" id="basic-addon1">Nombre Sala</span>
                     </div>
                     <input type="text" class="form-control" placeholder="Nombre" [(ngModel)]="sala.nombre" name="nombre" aria-describedby="basic-addon1">
                 </div>
@@ -24,10 +24,10 @@
                         <label class="input-group-text" for="inputGroupSelect01">Expositor</label>
                     </div>
                     <select class="custom-select" id="inputGroupSelect01" [(ngModel)]="expositor.id" name="id">
-            <option selected>Elija un Expositor</option>
-            <option *ngFor="let item of expositores" value="{{item.id}}"> {{item.nombre}} {{item.apellido}}</option>
+          <option selected>Elija un Expositor</option>
+          <option *ngFor="let item of expositores" value="{{item.id}}"> {{item.nombre}} {{item.apellido}}</option>
 
-          </select>
+        </select>
                 </div>
                 <p></p>
                 <div class="input-group mb-3">
