@@ -22,7 +22,7 @@
         "angularx-qrcode": "^1.6.4",
         "bootstrap": "^4.3.1",
         "@fortawesome/fontawesome-free": "^5.7.2",
-        "jspdf": "^1.5.3",
+        "jspdf": "^2.3.1",
         "rxjs": "~6.4.0",
         "tslib": "^1.9.0",
         "ngx-toastr": "^9.2.0",
